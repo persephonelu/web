@@ -1,0 +1,56 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//提供关键词排行榜信息
+class  App_weibo extends CI_Controller {
+    
+    //获得每个类别下的用户热门标签
+    public function get_tag_rank()
+    {
+        //接收类别参数
+        $category = $this->rest_provider->get_request("c");
+        $result = $this->app_weibo_provider->get_tag_rank($category);
+        
+        //输出rest_json格式的数据
+        $this->rest_provider->print_rest_json($result); 
+    }
+
+    //获得一个app的用户标签
+    public function get_app_user_tags()
+    {
+        //获得app id
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->app_weibo_provider->get_app_user_tags($app_id);
+        //输出rest json格式数据
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得某个app的用户性别分布
+    public function get_app_user_gender()
+    {
+        //获得app id
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->app_weibo_provider->get_app_user_gender($app_id);
+        //输出rest json格式数据
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得某个app的用户的地域分布
+    public function get_app_user_area()
+    {
+        //获得app id
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->app_weibo_provider->get_app_user_area($app_id);
+        //输出rest json格式数据
+        $this->rest_provider->print_rest_json($result); 
+    }
+
+    //获得某个app的用户上网时段分布 
+    public function get_app_user_time()
+    {
+        //获得app id
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->app_weibo_provider->get_app_user_time($app_id);
+        //输出rest json格式数据
+        $this->rest_provider->print_rest_json($result);
+    }
+}
+?>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>应用宝库</title>
+<link rel="stylesheet" href="css/comm.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+    	<div class="headerCon">
+        	<a href="javascript:;" class="db logo fl">logo</a>
+        	<ul class="fl">
+            	<li><a href="javascript:;">排行榜</a></li>
+                <li class="sLine">|</li>
+                <li><a href="javascript:;">趋势</a></li>
+            </ul>
+            <div class="regLogin fr pr">
+            	<a href="javascript:;">注册</a> | <a href="javascript:;">登录</a><a href="javascript:;" class="setUp spr db" id="c_btn"></a>
+                <div class="setList pa" id="c_list">
+                	<i class="arrowUp spr db pa"></i>
+                    <dl>
+                    	<dd><a href="javascript:;"><i class="appBtn spr db"></i>我的应用</a></dd>
+                        <dd><a href="javascript:;"><i class="attBtn spr db"></i>我的关注</a></dd> 
+                        <dd><a href="javascript:;"><i class="userBtn spr db"></i>帐号设置</a></dd>
+                        <dd><a href="javascript:;"><i class="exitBtn spr db"></i>退出</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    	<div class="searchBox">
+        	<input name=""  class="sInput db fl" value="请输入要搜索的应用" onfocus="if(value == defaultValue){value='';this.style.color='#000'}" onblur="if(!value){value = defaultValue;this.style.color='#999'}"  type="text">
+            <input name="" type="button" class="sBtn db fl">
+        </div>
+        <div class="searchCon">
+        	<div class="appCon pr">
+            	<a class="appBtn db pa" href="javascript:;">应用权重</a>
+            	<img src="images/comp-analysis-b.png" alt="应用权重">
+            </div>
+            <div class="appCon pr">
+            	<a class="appBtn db pa" href="javascript:;">搜索权重</a>
+                <img src="images/kw-optimization.png" alt="搜索权重">
+            </div>
+            <div class="appCon pr">
+            	<a class="appBtn db pa" href="javascript:;">应用趋势</a>
+                <img src="images/review-analysis.png" alt="应用趋势">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+    	<p class="copy_link"><a href="javascript:;" >关于我们</a> <a href="javascript:;" >联系我们</a></p>
+    	<p>Copyright © 2014-2015 应用宝库 版权所有　沪ICP备12031794号</p>
+    </div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+		var aBtn = document.getElementById("c_btn"),
+		aCon = document.getElementById("c_list");
+		aBtn.onclick = function() {
+			if (aCon.style.display == "block") {
+				aCon.style.display = "none";
+				
+			} else {
+				aCon.style.display = "block";
+			};
+		};
+	}
+</script>
+</body>
+</html>

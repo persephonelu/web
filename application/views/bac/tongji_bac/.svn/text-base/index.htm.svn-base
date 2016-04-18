@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>如意搜-基于功能的商品搜索</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="http://app.ruyiso.com/resource/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+<div id="contener">
+      <nav>
+        <ul>
+         <li> 
+    <a href="http://app.ruyiso.com/">
+    <img width="120px" height="45px" src="http://app.ruyiso.com/resource/imgs/logo.jpg"></a>
+        </li>
+		  
+        </ul>
+      </nav>
+	<article class="content">
+	<form id="searchBar" method="POST" action='http://app.ruyiso.com/main/search'>
+            <input name="q" type="text" placeholder='植物大战僵尸'/>
+			<input type="image" src="http://app.ruyiso.com/resource/imgs/search-blue.png">
+        </form>
+
+      </article>
+	<footer>
+        <ul>
+          <li><a href="">关于我们 </a> | </li>
+          <li><a href="http://jos.jd.com/">京东 jos </a> | </li>
+          <li><a href="http://zone.jd.com/">京东 code</a> </li>
+        </ul>
+        <p>&copy;如意搜 沪ICP备12031794号</p>
+      </footer>
+    </div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="http://app.ruyiso.com/resource/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="http://app.ruyiso.com/resource/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+    $(function(){
+        document.onkeydown = function(e){
+            var ev = document.all ? window.event : e;
+            if(ev.keyCode==13) {
+                   $('#searchBar').submit();//处理事件
+             }
+        }
+        $("#contener").height($(window).height());
+      });
+    </script>
+  </body>
+</html>

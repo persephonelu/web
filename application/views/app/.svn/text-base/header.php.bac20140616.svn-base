@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>应用宝库</title>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>resource/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>resource/css/common.css">
+	</head>
+	<body id="index">
+		<nav>
+            <a href="<?php echo base_url();?>">
+            <img src="<?php echo base_url();?>resource/imgs/logo.jpg" alt="" title="" />
+			</a>
+		</nav>

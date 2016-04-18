@@ -1,0 +1,33 @@
+<h3 class="page-header">app搜索结果</h3>
+<div class="row" id="form_area">
+  <div class="col-lg-8">
+    <form role="form" method="get"  class="form-inline" ng-submit="search_app()">
+      <div class="input-group">
+        <input type="text" class="form-control" name="q" placeholder=""  value="" ng-model="name">
+      </div>
+      <button type="submit" class="btn btn-primary">搜索</button>
+    </form>
+  </div>
+</div>
+</br>
+</br>
+
+<!-- /#from_area -->
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th width="9%">序号</th>
+      <th>app</th>
+      <th>类别</th>
+      <th>下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="app in app_search_results">
+      <th class="table_middle">{{$index+1}}</th>
+      <td class="table_middle"><span class="c2"> <img ng-src="{{app.icon}}" class="img-rounded mr" alt=""> <a href="#app_content/{{app.app_id}}" target="_blank">{{app.name}}</a></span></td>
+      <td class="table_middle">{{app.ori_classes}}</td>
+      <td class="table_middle">{{app.download_times}}</td>
+    </tr>
+  </tbody>
+</table>

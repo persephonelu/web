@@ -1,0 +1,63 @@
+<?php
+#app关键词管理模块
+class Word_provider extends CI_Model {
+
+    public function __construct()
+    {
+        $this->load->database();
+        $this->db2 = $this->load->database('user', TRUE); //用户相关的数据，需要读写库
+    }
+
+     #获得关键词排行榜
+    public function get_word_rank($category, $start=0, $limit=10)
+    {
+        $sql = "select word,rank,num,name
+            from aso_word_rank_new left join aso_result_num 
+            on aso_word_rank_new.word=aso_result_num.query
+            where aso_result_num.ori_classes='$category'
+            or aso_result_num.ori_classes1='$category'
+            order by rank desc limit $start,$limit";
+
+        if ( $category=="应用" )
+        {
+            $sql = "select word,rank,num,name
+            from aso_word_rank_new left join aso_result_num 
+            on aso_word_rank_new.word=aso_result_num.query
+            order by rank desc limit $start,$limit";
+        }
+        $result = $this->db->query($sql)->result_array();
+        $num = $this->get_word_rank_num($category);
+        return array("num"=>$num, "results" =>$result);
+    }
+
+    #获得关键词排行榜记录个数
+    public function get_word_rank_num($category)
+    {
+        $sql = "select count(*) as result_num from aso_word_rank_new where ori_classes='$category'";
+
+        if ( $category=="应用" )
+        {
+            $sql = "select count(*) as result_num from aso_word_rank_new";
+        }
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]['result_num'];
+    }
+
+    #获得搜索建议词列表,appstore搜索提示接口
+    public function get_suggestion($keyword)
+    {
+        $url = "http://search.itunes.apple.com/WebObjects/MZSearchHints.woa/wa/hints?media=software&cc=cn&q=".$keyword;
+        $content = file_get_contents($url);
+        $xml = simplexml_load_string($content); //创建 SimpleXML对象 
+        //var_dump($xml->dict->array);
+        $result = array();
+        foreach ($xml->dict->array->dict as $word)
+        {
+            $suggestion = array();
+            $suggestion["word"] = (string)$word->string[0];
+            $suggestion["rank"] = (string)$word->integer;
+            $result[] = $suggestion; //append
+        }
+        return $result;
+    }
+}

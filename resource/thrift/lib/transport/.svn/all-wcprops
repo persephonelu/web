@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport
+END
+TNullTransport.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport/TNullTransport.php
+END
+TSocket.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport/TSocket.php
+END
+TFramedTransport.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport/TFramedTransport.php
+END
+TTransport.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport/TTransport.php
+END
+THttpClient.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport/THttpClient.php
+END
+TBufferedTransport.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport/TBufferedTransport.php
+END
+TMemoryBuffer.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport/TMemoryBuffer.php
+END
+TSocketPool.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport/TSocketPool.php
+END
+TPhpStream.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/transport/TPhpStream.php
+END

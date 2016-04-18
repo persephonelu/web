@@ -1,0 +1,24 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//提供关键词排行榜信息
+class  Word extends CI_Controller {
+
+    //获得关键词排行榜
+    public function get_word_rank()
+    {
+        $category = $this->rest_provider->get_request("c");
+        $start = $this->rest_provider->get_request("start");
+        $limit = $this->rest_provider->get_request("limit");
+        $result = $this->word_provider->get_word_rank($category, $start, $limit);
+        $this->rest_provider->print_rest_json($result);
+    }    
+
+
+    //关键词搜索
+    public function get_word_search_results()
+    {
+        $name = $this->rest_provider->get_request("n");
+        $result = $this->word_provider->get_suggestion($name);
+        $this->rest_provider->print_rest_json($result);
+    }
+}
+?>

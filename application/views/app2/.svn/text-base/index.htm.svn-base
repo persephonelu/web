@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>应用宝库</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+    	<div class="headerCon">
+        	<a href="javascript:;" class="db logo fl">logo</a>
+        	<ul class="fl">
+            	<li><a href="javascript:;">排行榜</a></li>
+                <li class="sLine">|</li>
+                <li><a href="javascript:;">搜索优化</a></li>
+                <li class="sLine">|</li>
+                <li><a href="javascript:;">趋势</a></li>
+            </ul>
+            <div class="regLogin fr pr">
+            	<a href="javascript:;">注册</a> | <a href="javascript:;">登录</a>
+                <div class="dropdown fr">
+  					<a id="dLabel" data-target="#" href="http://example.com" class="setUp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    				<span class="glyphicon glyphicon-cog"></span>
+  					</a>
+					<dl class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <dd><a href="javascript:;"><span class="glyphicon glyphicon-inbox"></span>我的应用</a></dd>
+                        <dd><a href="javascript:;"><span class="glyphicon glyphicon-th-large"></span>我的关注</a></dd>
+                        <dd><a href="javascript:;"><span class="glyphicon glyphicon-user"></span>帐号设置</a></dd>
+                        <dd><a href="javascript:;"><span class="glyphicon glyphicon-log-out"></span>退出</a></dd>
+                    </dl>
+				</div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    	<div class="searchBox">
+        	<div class="input-group">
+          <input type="text" class="form-control">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default">搜索</button>
+          </span>
+        </div>
+        </div>
+        <div class="searchCon">
+        <div class="row">
+  <div class="col-md-4">
+  		<div class="appCon img-rounded">
+  		<img src="images/comp-analysis-b.png" alt="应用权重">
+        <button type="button" class="btn btn-primary btn-lg btn-block">应用权重</button>
+        </div>
+  </div>
+  <div class="col-md-4">
+  		<div class="appCon img-rounded">
+  		<img src="images/kw-optimization.png" alt="搜索权重">
+        <button type="button" class="btn btn-primary btn-lg btn-block">搜索权重</button>
+        </div>
+  </div>
+  <div class="col-md-4">
+  		<div class="appCon img-rounded">
+  		<img src="images/review-analysis.png" alt="应用趋势">
+        <button type="button" class="btn btn-primary btn-lg btn-block">应用趋势</button>
+        </div>
+  </div>
+</div>
+        </div>
+    </div>
+    <div class="footer">
+    	<p class="copy_link"><a href="javascript:;" >关于我们</a> <a href="javascript:;" >联系我们</a></p>
+    	<p>Copyright © 2014-2015 应用宝库 版权所有　沪ICP备12031794号</p>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$('.dropdown-toggle').dropdown()
+</script>
+</body>
+</html>

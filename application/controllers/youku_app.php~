@@ -1,0 +1,36 @@
+<?php
+class Youku_app extends CI_Controller {
+	public function __construct()
+	{
+        parent::__construct();
+        $this->load->model('app_youku_provider');
+    }
+
+    //获得某个类别下的排行榜
+    public function get_app_rank()
+    {
+        $category = $this->rest_provider->get_request("c");
+        $rank_type = $this->rest_provider->get_request("rank_type");
+        $result = $this->app_youku_provider->get_app_rank($category, $rank_type);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+	public function get_app_videos()
+	{
+		$result	= array();
+		if (isset($_REQUEST["id"]))
+		{
+			$appid	= $_REQUEST["id"];
+			$result = $this->app_youku_provider->get_youkuvideo_by_appid($appid);
+		}
+		else if (isset($_REQUEST["name"]))
+		{
+			$name	= $_REQUEST["name"];
+			$datetime	= date("Y-m-d", strtotime("-1 days"));
+
+			$result 	= $this->app_youku_provider->get_youkuvideo_by_appname($datetime, $name);
+		}
+        $this->rest_provider->print_rest_json($result);
+    }
+}
+?>

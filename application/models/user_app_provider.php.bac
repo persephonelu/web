@@ -1,0 +1,24 @@
+<?php
+#user app 模型
+class User_app_provider extends CI_Model {
+    
+    public function __construct()
+    {
+        $this->load->database();
+    }
+
+    /*
+    //根据用户id获得用户的app
+    public function get_app($email)
+    {
+        $sql = "select * from member_app left join app_info 
+            on member_app.app_id=app_info.app_id
+            where email='$email'";
+        $result = $this->db->query($sql)->result_array();
+        var_dump($result);
+        return $result; 
+    }
+     */
+}
+
+?>

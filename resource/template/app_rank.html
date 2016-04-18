@@ -1,0 +1,65 @@
+<h3 class="page-header"><span class="text-primary">{{category_selected}} </span>类别排行榜 </h3>
+<div class="row" id="form_area">
+  <div class="col-lg-8">
+    <form role="form" method="get" class="form-inline" ng-submit="app_search()">
+      <div class="input-group">
+        <input type="text" class="form-control" name="q" placeholder="搜索app..."  value="" ng-model="name">
+      </div>
+      <button type="submit" class="btn btn-primary">搜索</button>
+    </form>
+  </div>
+  <div class="col-lg-4">
+    <div class="dropdown"> <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href=""> 类别选择 <span class="caret"></span> </a>
+      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+        <li class="dropdown-submenu"> <a tabindex="-1" href="javascript:;">游戏子类</a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="game_category in game_categories"><a href="" ng-click="get_category_app_rank(game_category.ori_classes)"> {{game_category.ori_classes}} </a></li>
+          </ul>
+        <li class="divider"></li>
+        <li ng-repeat="category in categories"><a href="" ng-click="get_category_app_rank(category.ori_classes)">{{category.ori_classes}}</a></li>
+      </ul>
+    </div>
+    <!-- /.dropdown --> 
+  </div>
+  <!-- /.col-lg-4 --> 
+</div>
+<!-- /#form_area --> 
+
+</br>
+</br>
+<div class="searchDetail" id="table_area">
+<table width="100%" border="0" class="customers">
+  <tr>
+    <th>&nbsp;</th>
+    <th >免费排行</th>
+    <th>付费排行</th>
+    <th>畅销排行</th>
+  </tr>
+  <tr ng-repeat="app in app_rank['topfreeapplications']">
+    <td><h3>{{$index+1}}</h3></td>
+    <td>
+        <span class="c2"> 
+        <img ng-src="{{app.icon}}" class="img-rounded mr" alt="" /> 
+        <a href="#app_content/{{app.app_id}}" target="_blank">{{app.name}}</a>
+        </span>
+    </td>
+    
+    <td>
+        <span class="c2"> 
+        <img ng-src="{{app_rank['toppaidapplications'][$index].icon}}" class="img-rounded mr" alt="" /> 
+        <a href="#app_content/{{app_rank['toppaidapplications'][$index].app_id}}" target="_blank">{{app_rank['toppaidapplications'][$index].name}}</a>
+        </span>
+    </td>
+    
+    <td>
+        <span class="c2"> 
+        <img ng-src="{{app_rank['topgrossingapplications'][$index].icon}}" class="img-rounded mr" alt="" /> 
+        <a href="#app_content/{{app_rank['topgrossingapplications'][$index].app_id}}" target="_blank">{{app_rank['topgrossingapplications'][$index].name}}</a>
+        </span>
+    </td>
+    
+
+  </tr>
+</table>
+<img ng-show="app_rank_show_wait" src="http://cdn.appbk.com/images/wait1.gif">
+</div>

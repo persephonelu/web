@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>如意搜-基于功能的商品搜索</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="http://app.ruyiso.com/resource/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+<div id="contener">
+      <nav>
+        <ul>
+         <li> 
+    <a href="http://app.ruyiso.com/">
+    <img width="120px" height="45px" src="http://app.ruyiso.com/resource/imgs/logo.jpg"></a>
+        </li>
+		  
+        </ul>
+      </nav>
+	<article class="content">
+	<form id="searchBar" method="POST" action='http://app.ruyiso.com/main/search'>
+            <input name="q" type="text" placeholder='植物大战僵尸'/>
+			<input type="image" src="http://app.ruyiso.com/resource/imgs/search-blue.png">
+        </form>
+        <hr>
+		<h2>搜索“植物大战僵尸”的结果</h2>
+        <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        <table class="table table-striped table-bordered" >
+        <thead>
+        <tr>
+        	<th>图标</th>
+            <th>名称</th>
+            <th>简介</th>
+        </tr>
+        </thead>
+        <tbody>
+   		<tr>
+        	<td>
+            <img  class="img-rounded" alt="10x10" style="width: 60px; height:60px;" src="http://c.hiphotos.bdimg.com/wisegame/pic/item/1c3e6709c93d70cfd1d6eeb2fadcd100baa12b65.jpg">
+            </td>
+            <td style="word-break:keep-all;">植物大战僵尸</td>
+            <td>植物大战僵尸 穿! 越! 了! 没错,它们来到了秦始皇时代,在长城上继续执着地追求着他们梦寐以求、鲜美多汁、热气腾腾的脑子…… 累计获得超过30个年度最佳游戏奖...</td>
+        </tr>
+        
+         <tr>
+        	<td>  
+            <img  class="img-rounded" alt="100x100" style="width: 60px; height:60px;" src="http://p17.qhimg.com/t01f60ab9b449b8ad15.png">
+			</td>
+            <td style="word-break:keep-all;">植物大战僵尸2</td>
+            <td>是时候了！《植物大战僵尸2——奇妙时空之旅》登陆中国，植物们与僵尸们史诗般的斗争，将在不同的时空维度中进行续写！新的植物，新的僵尸，新的玩法，结合最先进的触摸屏...</td>
+        </tr>
+        </tbody>
+		</table>
+        </div><!-- div of class col-md-6"-->
+        </div>
+        
+      </article>
+	<footer>
+        <ul>
+          <li><a href="">关于我们 </a> | </li>
+          <li><a href="http://jos.jd.com/">京东 jos </a> | </li>
+          <li><a href="http://zone.jd.com/">京东 code</a> </li>
+        </ul>
+        <p>&copy;如意搜 沪ICP备12031794号</p>
+      </footer>
+    </div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="http://app.ruyiso.com/resource/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="http://app.ruyiso.com/resource/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+    $(function(){
+        document.onkeydown = function(e){
+            var ev = document.all ? window.event : e;
+            if(ev.keyCode==13) {
+                   $('#searchBar').submit();//处理事件
+             }
+        }
+        $("#contener").height($(window).height());
+      });
+    </script>
+  </body>
+</html>

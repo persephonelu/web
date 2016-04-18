@@ -1,0 +1,156 @@
+<h3 class="page-header">app竞品管理</small> </h3>
+
+<!-- app list panel -->
+<div class="panel panel-default">
+  <div class="panel-heading">竞品列表</div>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="9%">序号</th>
+          <th>app</th>
+          <th>类别</th>
+          <th>下载量</th>
+          <th>删除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="app in apps">
+          <th class="table_middle">{{$index+1}}</th>
+          <td class="table_middle"><span class="c2"> <img ng-src="{{app.icon}}" class="img-rounded mr" alt=""> 
+           <a href="{{base_url}}main/rank#/app_content/{{app.app_id}}" target="_blank"> {{app.name}}</a></span></td>
+          <td class="table_middle">{{app.ori_classes}}</td>
+          <td class="table_middle">{{app.download_times}}</td>
+          <td class="table_middle"><a href="" ng-click="del_compete_app($index)">删除</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <img ng-show="user_app_show_wait" src="http://cdn.appbk.com/images/wait1.gif"> 
+    </div>
+</div>
+<!-- /.pannel -->
+
+<div class="panel panel-default">
+  <div class="panel-heading">为app添加竞品</div>
+  <div class="panel-body"> 
+    
+    <!-- tabs -->
+    <ul class="nav nav-tabs">
+    	<li role="presentation" ng-class="{active:search_app_tab}"><a href="" ng-click="search_app_tab_click()">搜索添加</a></li>
+      <li role="presentation" ng-class="{active:sys_recommend_app_tab}" ><a href="" ng-click="sys_recommend_app_tab_click()">系统推测</a></li>
+      <li role="presentation" ng-class="{active:user_also_buy_app_tab}"><a href="" ng-click="user_also_buy_app_tab_click()">用户同时还下载</a></li>
+      
+    </ul>
+    <!-- /.tabs -->
+    
+    <div class="tab-content"> 
+      
+      <!-- 已提交市场的app -->
+      <div class="tab-pane" ng-class="{active:search_app_tab}" id="old_app"> <br/>
+        <div class="row" id="form_area">
+          <div class="col-lg-8">
+            <form role="form" class="form-inline" ng-submit="search_app()">
+              <div class="input-group">
+                <input type="text" class="form-control" name="q" ng-model="query" placeholder="搜索app名称或者app id" >
+              </div>
+              <button type="submit" class="btn btn-primary">搜索</button>
+            </form>
+          </div>
+        </div>
+        
+        <!-- /#from_area --> 
+        </br>
+        
+        <!-- 搜索结果 -->
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th width="9%">序号</th>
+              <th>app</th>
+              <th>类别</th>
+              <th>下载量</th>
+              <th>添加</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="app in app_search_results">
+              <th class="table_middle">{{$index+1}}</th>
+              <td class="table_middle"><span class="c2"> <img ng-src="{{app.icon}}" class="img-rounded mr" alt=""> 
+               <a href="{{base_url}}main/rank#/app_content/{{app.app_id}}" target="_blank">{{app.name}}</a></span></td>
+              <td class="table_middle">{{app.ori_classes}}</td>
+              <td class="table_middle">{{app.download_times}}</td>
+              <td class="table_middle"><a href="" ng-click="add_compete_app_by_search($index)">添加</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <img ng-show="app_search_show_wait" src="http://cdn.appbk.com/images/wait1.gif"> 
+      </div>
+      <!-- /#old_app --> 
+      
+      <!-- 系统推荐的竞品app -->
+      <div class="tab-pane" ng-class="{active:sys_recommend_app_tab}" id="sys_recommend_app"> <br/>
+      
+		 </br>
+        <!-- 推荐结果 -->
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th width="9%">序号</th>
+              <th>app</th>
+              <th>类别</th>
+              <th>下载量</th>
+              <th>添加</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="app in sys_recommend_apps">
+              <th class="table_middle">{{$index+1}}</th>
+              <td class="table_middle"><span class="c2"> <img ng-src="{{app.icon}}" class="img-rounded mr" alt=""> 
+              <a href="{{base_url}}main/rank#/app_content/{{app.app_id}}" target="_blank">{{app.name}}</a></span></td>
+              <td class="table_middle">{{app.ori_classes}}</td>
+              <td class="table_middle">{{app.download_times}}</td>
+              <td class="table_middle"><a href="" ng-click="add_compete_app_by_sys_recommend($index)">添加</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <img ng-show="sys_recommend_app_show_wait" src="http://cdn.appbk.com/images/wait1.gif">
+      </div>
+      <!-- /#sys_recommend_app --> 
+      
+      <!-- 用户同时下载的竞品app -->
+      <div class="tab-pane" ng-class="{active:user_also_buy_app_tab}" id="user_also_buy_app"> <br/>
+        <!-- 推荐结果 -->
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th width="9%">序号</th>
+              <th>app</th>
+              <th>类别</th>
+              <th>下载量</th>
+              <th>添加</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="app in user_also_buy_apps">
+              <th class="table_middle">{{$index+1}}</th>
+              <td class="table_middle"><span class="c2"> <img ng-src="{{app.icon}}" class="img-rounded mr" alt=""> 
+               <a href="{{base_url}}main/rank#/app_content/{{app.app_id}}" target="_blank">{{app.name}}</a></span></td>
+              <td class="table_middle">{{app.ori_classes}}</td>
+              <td class="table_middle">{{app.download_times}}</td>
+              <td class="table_middle"><a href="" ng-click="add_compete_app_by_user_also_buy($index)">添加</a></td>
+            </tr>
+          </tbody>
+        </table>
+		 <img ng-show="user_also_buy_app_show_wait" src="http://cdn.appbk.com/images/wait1.gif"> 
+      </div>
+      <!-- /#user_also_buy_app --> 
+      
+    </div>
+    <!-- /.tab-content --> 
+    
+  </div>
+  <!-- /.panel-body --> 
+  
+</div>
+<!-- /.panel --> 
+

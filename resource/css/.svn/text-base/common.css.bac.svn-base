@@ -1,0 +1,48 @@
+/*导航*/
+ul li{list-style-type: none;display: inline-block;}
+ul{margin: 0;padding: 0}
+
+nav {height: 63px;background: white;border-bottom: 1px solid #d5d5d5;}
+nav ul{width: 94%;margin: 0 auto;}
+nav ul li{float: left;font-size: 18px;margin-left: 17px;margin-right: 17px;border-top: 5px solid white;padding:15px 0;}
+
+#index{background-color: #EFEFEF;}
+#index nav{margin: 0 auto 20px auto;}
+#index nav a{width: 150px;height: 50px;display: block;}
+#index nav a img{height:100%;width: 100%;margin: 0;padding: 0;border:0}
+
+
+#index .index_content{width: 1200px;margin: 0 auto}
+#index .index_content form div{position: relative;width: 50%;height: 55px; border:1px solid #B5BAD0;margin: 0 auto;background-color: #fff;font-size: 18px;}
+#index .index_content form div input{width: 90%;border:0px;height: 99%;padding-left: 15px;}
+#index .index_content form div button{border:0px;height: 35px;width: 50px;background-color: #fff;}
+
+#index .index_content ul.index_show{padding: 0;margin-top: 30px;}
+
+#index .index_content ul.index_show li{list-style-type: none;float: left;background: #fff;width: 32.5%;margin: 5px;padding: 10px;}
+#index .index_content ul.index_show li a {color: #333; text-decoration: none;}
+#index .index_content ul.index_show li img{width: 100%;}
+#index .index_content ul.index_show li h1{color: #20aa9c;font-size: 18px;text-align: center;margin: 10px 0}
+#index .index_content ul.index_show li p{line-height: 22px;word-break:break-all;height: 110px;overflow: hidden;}
+
+#index .index_content h2{font-size: 18px;margin-bottom: 10px;}
+#index .row{margin: 0;}
+.col-md-2 img {height: 55px;width: 55px;}
+
+#index footer{text-align: center;margin: 80px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

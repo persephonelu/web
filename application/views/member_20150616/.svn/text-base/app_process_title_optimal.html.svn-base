@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="http://cdn.appbk.com/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="dashboard.css" rel="stylesheet" type="text/css">
+<link href="http://www.appbk.com/resource/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <div class="header">
+    	<div class="headerCon">
+        	<a href="http://www.appbk.com/" class="db logo fl">logo</a>
+        	<ul class="fl">
+            <li><a href="http://www.appbk.com/main/rank">统计排行</a></li>
+                <li class="sLine">|</li>
+                <li><a href="http://www.appbk.com/aso">搜索优化</a></li>
+                <li class="sLine">|</li>
+                <li><a href="http://blog.appbk.com/intro/" target="_blank">服务介绍</a></li>
+            </ul>
+            <div class="regLogin fr pr">
+                <a href="http://www.appbk.com/user/login">新浪微博登录</a>
+            </div>
+        </div>
+    </div>
+
+
+<!-- content 内容开始  -->
+<div class="container-fluid">
+  <div class="row">
+  	<div class="col-md-2 sidebar">
+    	<ul class="nav nav-sidebar">
+  		<li> <a href="index.html">我的app</a></li>
+        <li> <a href="add_app.html">添加app</a></li>
+        </ul>
+    
+        <ul class="nav nav-sidebar">
+		<li> <a href="app_process_app_info.html">部落冲突</a> </li>
+        <li> <a href="app_process_keywords_manage.html">关键词管理</a> </li>
+        <li> <a href="app_process_keywords_optimal.html">关键词优化</a> </li>
+        <li   class="active"> <a href="app_process_title_optimal.html">标题优化</a> </li>
+        <li> <a href="app_process_brief_optimal.html">介绍优化</a> </li>
+        </ul>
+        
+    </div>
+    <div class="col-md-10 col-md-offset-2 main">
+    	<h3 class="page-header">标题优化</h3>
+        
+        <div class="panel panel-default">
+        <div class="panel-heading"> 标题长度</div>
+        <div class="panel-body">
+			<p>标准：</p>
+            <br/>
+            <p>评测：</p>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"> 标题关键词</div>
+        <div class="panel-body">
+			<p>标准：</p>
+            <br/>
+            <p>评测：</p>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"> 总评分</div>
+        <div class="panel-body">
+			<p>60</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- content 内容结束  -->
+</body>
+</html>

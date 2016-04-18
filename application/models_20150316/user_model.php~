@@ -1,0 +1,97 @@
+<?php
+#user 模型
+
+include_once( 'resource/weibo_api/config.php' );
+include_once( 'resource/weibo_api/saetv2.ex.class.php' );
+
+class User_model extends CI_Model {
+    
+    public function __construct()
+    {
+        $this->load->database();
+    }
+
+    #获得登录的url
+    public function get_login_url() 
+    {
+        $o = new SaeTOAuthV2( WB_AKEY , WB_SKEY );
+        $code_url = $o->getAuthorizeURL(WB_CALLBACK_URL);
+        return $code_url;
+    }
+
+    
+    #退出登录
+    public function logout()
+    {
+        if (!session_id()) session_start();
+        unset($_SESSION['token']);
+        return 0;
+    }
+
+    //获得用户信息
+    public function get_user_info()
+    {
+        if (!session_id()) session_start();
+
+        //如果没有登录信息，返回空
+        if ( !isset($_SESSION['token']) ) 
+        {
+            return null;
+        }
+
+        //如果有登录信息，获取用户信息
+        $c = new SaeTClientV2( WB_AKEY , WB_SKEY , $_SESSION['token']['access_token'] );
+        $uid_get = $c->get_uid();
+        try
+        {
+            $uid = $uid_get['uid']; //当前用户的uid
+        }
+        catch (Exception $e)
+        {
+            return null;
+        }    
+        $user_info = $c->show_user_by_id($uid);
+        //$current_user_name = $user_info['screen_name'];
+        //var_dump($user_info);
+        return $user_info;
+    }
+    
+    //获得token,存入session
+    public function get_token($code)
+    {
+        session_start();
+        $o = new SaeTOAuthV2( WB_AKEY , WB_SKEY );
+        $code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );
+
+        if ( !isset($_SESSION['token']) )
+        {   
+            $o = new SaeTOAuthV2( WB_AKEY , WB_SKEY );
+            $keys = array();
+            $keys['code'] = $code;
+            $keys['redirect_uri'] = WB_CALLBACK_URL;
+            try 
+            {   
+                $token = $o->getAccessToken( 'code', $keys ) ; 
+            }   
+            catch (OAuthException $e) 
+            {   
+                echo "not get token";
+            }   
+
+            if ($token)
+            {
+                $_SESSION['token'] = $token;
+                //setcookie('weibojs_'.$o->client_id, http_build_query($token));
+            }
+      else
+      {
+          return -1;
+      }
+    }
+    return 0;
+  }
+
+
+}
+
+?>

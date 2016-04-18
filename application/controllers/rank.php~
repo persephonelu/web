@@ -1,0 +1,18 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+#app排行榜主页
+class Rank extends CI_Controller {
+
+    //各类排行榜，接收参数为排行榜类型，app类别，如果app类别是游戏，需要游戏子类别
+    public function index($start=0)
+    {
+        //获得用户信息,如果没有则返回空
+        $data["user"] = $this->user_provider->get_login_user_info();
+        
+        $this->load->view('common/header_rank', $data);
+        $this->load->view('main/app_rank');
+        $this->load->view('common/footer_rank');
+    }
+
+}
+
+?>

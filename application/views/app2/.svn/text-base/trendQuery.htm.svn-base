@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>应用宝库</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+    	<div class="headerCon">
+        	<a href="javascript:;" class="db logo fl">logo</a>
+        	<ul class="fl">
+            	<li><a href="javascript:;">排行榜</a></li>
+                <li class="sLine">|</li>
+                <li><a href="javascript:;">搜索优化</a></li>
+                <li class="sLine">|</li>
+                <li><a href="javascript:;">趋势</a></li>
+            </ul>
+            <div class="regLogin fr pr">
+            	<div class="dropdown">
+  					<a id="dLabel" data-target="#" href="http://example.com" class="setUp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    				<span class="glyphicon glyphicon-cog"></span>
+  					</a>
+					<dl class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <dd><a href="javascript:;"><span class="glyphicon glyphicon-inbox"></span>我的应用</a></dd>
+                        <dd><a href="javascript:;"><span class="glyphicon glyphicon-th-large"></span>我的关注</a></dd>
+                        <dd><a href="javascript:;"><span class="glyphicon glyphicon-user"></span>帐号设置</a></dd>
+                        <dd><a href="javascript:;"><span class="glyphicon glyphicon-log-out"></span>退出</a></dd>
+                    </dl>
+				</div>
+            </div>
+            <div class="sInputShort fr pr">
+            	<div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">搜索</button>
+          	</span>
+        </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    	<ol class="breadcrumb">
+                  <li><a href="#">首页</a></li>
+                  <li><a href="#">排行榜</a></li>
+                  <li><a href="#">上升最快排行榜</a></li>
+                  <li class="active">QQ HD</li>
+		</ol>
+        <div class="searchResultCon">
+            <ul class="nav nav-tabs" role="tablist">
+              <li><a href="#one1" role="tab" data-toggle="tab">热词排行</a></li>
+              <li><a href="#one2" role="tab" data-toggle="tab">新词榜</a></li>
+              <li><a href="#one3" role="tab" data-toggle="tab">联想词</a></li>
+              <li><a href="#one4" role="tab" data-toggle="tab">搜索研究</a></li>
+              <li class="active"><a href="#one5" role="tab" data-toggle="tab">趋势查询</a></li>
+            </ul>
+        	<div class="tab-content searchTabCon">
+              <div class="tab-pane" id="one1">无内容</div>
+              <div class="tab-pane" id="one2">无内容</div>
+              <div class="tab-pane" id="one3">无内容</div>
+              <div class="tab-pane" id="one4">无内容</div>
+              <div class="tab-pane active" id="one5">
+              <div class="row">
+                  <div class="col-md-8">
+                  		<div class="searchBox1">
+                        <div class="input-group">
+                      <input type="text" class="form-control">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default">搜索</button>
+                      </span>
+        			</div>
+        			</div>
+                        <br />
+                        <img src="http://placehold.it/590x240" alt="" />
+                            <br />
+                            <table width="100%" border="0" class="customers">
+                                      <tr>
+                                        <th width="11%">关键词</th>
+                                        <th width="11%">搜索指数</th>
+                                        <th width="13%">搜索结果数</th>
+                                        <th width="15%">优化难度</th>
+                                        <th width="6%">搜索研究</th>
+                                        <th width="14%">操作</th>
+                                      </tr>
+                                      <tr>
+                                        <td>微信</td>
+                                        <td>2323</td>
+                                        <td>343434</td>
+                                        <td>8</td>
+                                        <td><button type="button" class="btn btn-default btn-xs sRBtn">查看</button></td>
+                                        <td><button class="btn btn-primary btn-xs" type="button">收藏</button></td>
+                                      </tr>
+                                </table>
+                  </div>
+                  <div class="col-md-4">
+                  		<div class="searchResultCon">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active"><a href="#one1" role="tab" data-toggle="tab">QQ的搜索结果</a></li>
+            </ul>
+        	<div class="tab-content searchTabCon">
+              <div class="tab-pane active" id="one1">
+              		<div class="searchResultList sH">
+                          <table width="100%" border="0">
+                            <tr>
+                              <td  width="6%" rowspan="2" class="sRNum1">1</td>
+                              <td  width="22%" rowspan="2"><img src="http://placehold.it/45x45" class="sRImg1" alt="" /></td>
+                              <td><strong >QQ</strong> Tencent (shenzhen).</td>
+                            </tr>
+                            <tr>
+                              <td><span class="stars star5"></span><span class="grade fb">3.7分</span><span class="fr">free</span></td>
+                            </tr>
+                          </table>
+                   </div>
+                   <div class="searchResultList sH">
+                          <table width="100%" border="0">
+                            <tr>
+                              <td  width="6%" rowspan="2" class="sRNum1">2</td>
+                              <td  width="22%" rowspan="2"><img src="http://placehold.it/45x45" class="sRImg1" alt="" /></td>
+                              <td><strong >QQ</strong> Tencent (shenzhen).</td>
+                            </tr>
+                            <tr>
+                              <td><span class="stars star5"></span><span class="grade fb">3.7分</span><span class="fr">free</span></td>
+                            </tr>
+                          </table>
+                   </div>
+                   <div class="searchResultList sH">
+                          <table width="100%" border="0">
+                            <tr>
+                              <td  width="6%" rowspan="2" class="sRNum1">3</td>
+                              <td  width="22%" rowspan="2"><img src="http://placehold.it/45x45" class="sRImg1" alt="" /></td>
+                              <td><strong >QQ</strong> Tencent (shenzhen).</td>
+                            </tr>
+                            <tr>
+                              <td><span class="stars star5"></span><span class="grade fb">3.7分</span><span class="fr">free</span></td>
+                            </tr>
+                          </table>
+                   </div>
+                   <div class="searchResultList sH">
+                          <table width="100%" border="0">
+                            <tr>
+                              <td  width="6%" rowspan="2" class="sRNum1">4</td>
+                              <td  width="22%" rowspan="2"><img src="http://placehold.it/45x45" class="sRImg1" alt="" /></td>
+                              <td><strong >QQ</strong> Tencent (shenzhen).</td>
+                            </tr>
+                            <tr>
+                              <td><span class="stars star5"></span><span class="grade fb">3.7分</span><span class="fr">free</span></td>
+                            </tr>
+                          </table>
+                   </div>
+                   <div class="searchResultList sH">
+                          <table width="100%" border="0">
+                            <tr>
+                              <td  width="6%" rowspan="2" class="sRNum1">5</td>
+                              <td  width="22%" rowspan="2"><img src="http://placehold.it/45x45" class="sRImg1" alt="" /></td>
+                              <td><strong >QQ</strong> Tencent (shenzhen).</td>
+                            </tr>
+                            <tr>
+                              <td><span class="stars star5"></span><span class="grade fb">3.7分</span><span class="fr">free</span></td>
+                            </tr>
+                          </table>
+                   </div>
+                   <div class="searchResultList sH">
+                          <table width="100%" border="0">
+                            <tr>
+                              <td  width="6%" rowspan="2" class="sRNum1">6</td>
+                              <td  width="22%" rowspan="2"><img src="http://placehold.it/45x45" class="sRImg1" alt="" /></td>
+                              <td><strong >QQ</strong> Tencent (shenzhen).</td>
+                            </tr>
+                            <tr>
+                              <td><span class="stars star5"></span><span class="grade fb">3.7分</span><span class="fr">free</span></td>
+                            </tr>
+                          </table>
+                   </div>
+              </div>
+             </div>
+			</div>
+        </div>
+                  </div>
+			 </div>
+              </div>
+			</div>
+        </div>
+    </div>
+    <div class="footer">
+    	<p class="copy_link"><a href="javascript:;" >关于我们</a> <a href="javascript:;" >联系我们</a></p>
+    	<p>Copyright © 2014-2015 应用宝库 版权所有　沪ICP备12031794号</p>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$('.dropdown-toggle').dropdown()
+//tab切换
+$(function () {
+    $('#myTab a').tab('show')
+  })
+</script>
+</body>
+</html>

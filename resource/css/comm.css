@@ -1,0 +1,124 @@
+@charset "utf-8";
+body, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, p, a, img, input {padding:0;margin:0}
+body {font: 12px/1.5 arial,'hiragino sans gb','microsoft yahei','Simsun',sans-serif;color: #484848;background-color:#f1f1f1;}
+ul, li, dl, dt, dd {list-style:none}
+a {outline: none;text-decoration: none;color:#388cba;}
+a:hover{text-decoration: underline;color: #f17f2b;}
+.ht {text-indent: -999px;overflow: hidden}
+.fl {float: left}
+.fr {float: right}
+.fl, .fr {display: inline}
+.db {display: block}
+.fb {font-weight:bold;}
+.f14 {font-size: 14px}
+.f16 {font-size: 16px}
+.tc{text-align:center;}
+.mr{ margin-right:10px;}
+.pr{position:relative;}.pa{position:absolute;}
+.dn{display:none;}
+.spr {background: url(../images/sprBg.png) no-repeat;}
+.wrapper,.container,.headerCon{margin:0 auto;}
+.header {width:100%;height:55px;padding-top:5px;border-bottom:1px solid #D5D5D5;background-color:#fff;}
+.headerCon,.container{width:960px;}
+.headerCon ul{margin-left:30px;}
+.headerCon li{line-height:55px;}
+.regLogin{line-height:51px;}
+.headerCon li{padding:0 15px;float:left;font-size:16px;}
+.headerCon .sLine{float:left;padding:0;}
+.headerCon a{color:#000;}
+.regLogin a{margin:0 5px;display:inline-block;}
+.regLogin .setUp,.setList dd i{width:22px;height:22px;display:inline-block;vertical-align:middle;}
+.regLogin .setUp{margin-left:10px;background-position:-22px 0;}
+.regLogin .setUp:hover{background-position:0 0;}
+.setList{display:none;width:90px;height:100px;padding:10px 5px;border:1px solid #9b9b9b;background-color:#FFF;top:50px;right:0;}
+.setList dd{line-height:25px;font-size:12px;}
+.setList dd i{margin-right:5px;}
+.appBtn{background-position:-44px 0;}
+.attBtn{background-position:-66px 0;}
+.userBtn{background-position:-88px 0;}
+.exitBtn{background-position:-110px 0;}
+.arrowUp{width:12px;height:6px;background-position:-132px 0;top:-6px;right:10px;}
+.logo{width:142px;height:50px;background:url(../images/logo.jpg) no-repeat;font-size:0;}
+.container{margin:10px auto;}
+.searchBox{width:675px;height:40px;padding:15px 0;margin:0 auto;}
+.sInput,.sInputShort{border:1px solid #D5D5D5;transition:all 0.30s ease-in-out;
+-webkit-transition:all 0.30s ease-in-out;-moz-transition:all 0.30s ease-in-out;}
+.sInput{width:600px;height:40px;padding:0 10px;line-height:40px;}
+.sInputShort{width:260px;height:32px;padding:0 45px 0 10px;margin-top:8px;line-height:32px;}
+.sInput:focus {border:#35a5e5 1px solid;box-shadow: 0 0 5px rgba(81, 203, 238, 1);-webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);-moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);}
+.sBtn,.shortBtn{border:none;cursor:pointer;}
+.sBtn{width:50px;height:42px;background:#3091f2 url(../images/sprBg.png) no-repeat -148px 11px;}
+.shortBtn{width:30px;height:28px;right:4px;top:12px;background:#fff url(../images/sprBg.png) no-repeat -195px 2px;}
+.searchCon {margin-top:80px;overflow:hidden;padding:30px 0;background-color:#ebebeb;border:1px solid #e9e9e9;}
+.searchCon .appCon {background-color:#fff;float:left;width:215px;height:244px;margin:0 30px;padding:50px 20px 0;overflow:hidden;}
+.searchCon .appCon img{width:220px;height:138px;}
+.searchCon .appBtn{width: 100%;height:60px;bottom:0;left:0;background:linear-gradient(to bottom, #3091f2 0%, #2170c6 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);line-height:59px;font-size:21px;color:#fff;text-align: center;}
+
+.searchResultCon{padding:10px 0;}
+.searchResultCon .sTips{padding:0 0 10px 25px;line-height:30px;font-weight:bold;font-size:16px;}
+.searchTab{padding:0 25px;height:35px;}
+.searchTab li{width:100px;height:35px;background-color:#F1F1F1;margin-right:5px;float:left;border:1px solid #e1e1e1;line-height:35px;font-size:14px;text-align:center;}
+.searchTab a{display:block;color:#666;}
+.searchTab .on{height:36px;background-color:#fff; border-bottom:none;}
+.searchTabCon{padding:20px;border:1px solid #e1e1e1;margin-top:1px;background-color:#fff;}
+.searchResultList{height:80px;padding:5px 0 13px;margin-bottom:10px;background-color:#fafafa;border:1px solid #E9E9E9;color:#666;}
+.searchResultList .sImg{width:72px;height:72px;}
+.searchResultList .sRTitle,.searchResultList .sRBtn,.searchResultList .grade,.searchResultList .sRIcon,.stars{display:inline-block;vertical-align:middle;}
+.searchResultList .sRTitle{font-size:24px;}
+.searchResultList .sRNum{font-size:21px;}
+.searchResultList .grade{margin:0 8px;font-size:18px;}
+.searchResultList .sRBtn,.searchResultList .sRIcon{height:21px;border:1px solid #E1E1E1;background-color:#fff;line-height:22px;}
+.searchResultList .sRBtn{margin:0 10px;padding:0 10px;}
+.searchResultList .sRIcon{margin-right:10px;padding-right:10px;}
+.searchResultList .sRBox{width:21px;height:21px;background-color:#F1F1F1;border-right:1px solid #E1E1E1;display:inline-block;margin-right:10px;}
+.searchResultList .sRImg{width:21px;height:21px;background-color:#F1F1F1;border-right:1px solid #E1E1E1;display:inline-block;margin-right:10px;vertical-align:middle;}
+.searchResultList .sRImg img{width:15px;height:15px;margin:3px 0 0 3px;}
+.loadMore{line-height:40px;text-align:center;font-size:12px;color:#666;}
+/**星级显示**/
+.stars{width:80px;height:16px;line-height:16px;vertical-align:middle;}
+.star1{background:url(../images/stars.gif) 0 -80px no-repeat;}
+.star2{background:url(../images/stars.gif) 0 0px no-repeat;}
+.star3{background:url(../images/stars.gif) 0 -96px no-repeat;}
+.star4{background:url(../images/stars.gif) 0 -16px no-repeat;}
+.star5{background:url(../images/stars.gif) 0 -112px no-repeat;}
+.star6{background:url(../images/stars.gif) 0 -32px no-repeat;}
+.star7{background:url(../images/stars.gif) 0 -128px no-repeat;}
+.star8{background:url(../images/stars.gif) 0 -48px no-repeat;}
+.star9{background:url(../images/stars.gif) 0 -144px no-repeat;}
+.star10{background:url(../images/stars.gif) 0 -64px no-repeat;}
+.noSearchResult{line-height:25px;color:#999;}
+.searchDetail,.sdBor{overflow:hidden;}
+.sdBor{height:35px;padding:0 10px;background-color:#F1F1F1;border-bottom:1px solid #D5D5D5;}
+.sdBon{padding:10px 15px;}
+.select{height:25px;margin-top:5px;line-height:25px;}
+.searchDetail h3{line-height:35px;font-size:16px;}
+.searchDetail p{line-height:28px;}
+.searchDetail .num{margin-left:10px;color:#F00;}
+.searchDetailList{width:100%;padding-top:10px;overflow:hidden;}
+.searchDetailList .c1{color:#F00;}
+.customers{width:100%;border-collapse:collapse;}
+.customers td,.customers th{border:1px solid #E1E1E1;padding:3px 7px 2px 7px;line-height:21px; text-align:center;}
+.customers th{padding:5px;background-color:#F1F1F1;color:#000;}
+.page {padding:3px;margin:10px 0;text-align:center}
+.page a,.page span.current,.page span.disabled{padding:2px 5px;margin:2px;}
+.page a{border: 1px solid #e8e8e8;color:#999;text-decoration:none}
+.page a:hover,.digg a:active{border:1px solid #3091f2;color:#000;}
+.page span.current{border:1px solid #3091f2;font-weight:bold;color:#fff;background-color:#3091f2}
+.page span.disabled{border:1px solid #eee;color:#ddd;}
+.page span.total{color:#5e5e5e;margin-left:10px;}
+.page span.total span{font-weight:bold;color:#d70057;}
+.page span.go{margin:0 15px;}
+.page span.go input{width:30px;height:25px;line-height:25px;border:1px solid #e8e8e8;margin:0 5px;vertical-align:middle;}
+.page a.p_btn{width:52px;height:30px;padding:5px 10px;border:none;line-height:30px;background-color:#c61a37;margin-left:10px;color:#FFF;}
+.page a.p_btn:hover{background-color:#3091f2;}
+.reviewNum {padding:5px 0;line-height:25px;font-weight:bold;}
+.reviewNum span{margin-right:10px;}
+.review{border:1px solid #E1E1E1;background:#F5F5F5;padding:5px;margin-bottom:10px;overflow:hidden;clear:both;}
+.review .rTitle{width:100%;overflow:hidden;padding-bottom:5px;border-bottom:1px solid #E1E1E1;}
+.review .rTitle dd{float:left;color:#999;margin-right:10px;line-height:30px;}
+.review .rTitle .sources,.review .rTitle .time{float:right;}
+.review .rDetail{border-top:1px solid #fff;padding:5px 0 5px;clear:both;word-wrap:break-word;}
+.footer{/*position:absolute;bottom:0;left:0;*/width:100%;padding:5px 0;text-align:center;line-height:1.9;background:#909090;color:#fff}
+.footer a{color:#fff;margin:0 5px}
+.footer a:hover{text-decoration:underline}
+

@@ -1,0 +1,42 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//获得app的关键词信息，进行sao
+//目前主要提供排行榜信息
+class  User_photo extends CI_Controller {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model("user_photo_provider");
+    }
+     
+    //关键词推荐服务
+    public function index()
+    {
+        //读取类别
+        if ( isset($_REQUEST["c"]) )
+        {
+            $ori_classes = $_REQUEST["c"];
+        }
+        else
+        {
+            $ori_classes = "音乐";
+        }
+        //获取类别列表
+        $data["category_list"] = array("音乐","体育","社交","旅游","效率","健康健美","游戏","美食佳饮");
+
+        //获取一个类别下的标签
+        if ( ""==$ori_classes )
+        {
+            $data["tag_list"] = array();
+        }
+        else
+        {
+            $data["tag_list"] = $this->user_photo_provider->get_tag($ori_classes);
+        }
+
+        $data["ori_classes"] = $ori_classes;
+        $this->load->view('app2/header_index');
+        $this->load->view('app2/user_photo',$data);
+        $this->load->view('app2/footer'); 
+    }
+}
+?>

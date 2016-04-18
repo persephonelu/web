@@ -1,0 +1,28 @@
+<h3 class="page-header">关键词搜索 </h3>
+<div class="row" id="form_area">
+  <div class="col-lg-8">
+    <form role="form" method="post"  class="form-inline" ng-submit="search_word()">
+      <div class="input-group">
+        <input type="text" class="form-control" name="q" placeholder="搜索关键词..."  value="" ng-model="name">
+      </div>
+      <button type="submit" class="btn btn-primary">搜索</button>
+    </form>
+  </div>
+</div>
+<!-- /#from_area --> 
+</br>
+</br>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th width="9%">序号</th>
+    <th>关键词</th>
+    <th title="搜索指数反映每天搜索
+的次数多少">搜索指数 <span class="glyphicon glyphicon-question-sign text-info"></span></th>
+  </tr>
+  <tr ng-repeat="word in word_search_results">
+    <th>{{$index+1}}</th>
+    <td><span class="c2">{{word.word}}</span></td>
+    <td>{{word.rank}}</td>
+  </tr>
+</table>
+<img ng-show="app_search_show_wait" src="http://cdn.appbk.com/images/wait1.gif">

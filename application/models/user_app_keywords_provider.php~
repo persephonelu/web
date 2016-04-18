@@ -1,0 +1,79 @@
+<?php
+#user app keyword 模型
+class User_app_keyword_provider extends CI_Model {
+    
+    public function __construct()
+    {
+        $this->load->database();
+        $this->db2 = $this->load->database('user', TRUE); //用户相关的数据，需要读写库
+    }
+
+    //根据用户和appid，获取用户填写的itunes的关键词，没有热度等信息
+    public function get_user_app_keyword_list($email, $app_id)
+    {
+        $sql = "select word from member_word
+            where email='$email' and app_id='$app_id' and user_word_type=1";
+        $result = $this->db->query($sql)->result_array();
+        return $result;
+    }  
+
+    //根据用户和appid，获取用户填写的itunes的关键词，包括热度等信息
+    #输入：app_id
+    #注意，一个用户可能为多个app加同一个关键词，故需要在最后限制app_id
+    public function get_user_app_keywords($email, $app_id $start=0,$limit=100)
+    {
+        $sql = "select member_word.word,rank,num,name,user_word_type
+                 from member_word left join 
+                ( select query,rank,num,name
+                from aso_word_rank_new right join aso_result_num 
+                on aso_word_rank_new.word=aso_result_num.query
+                where query in 
+                 (
+                   select word from member_word 
+                   where email='$email' and app_id='$app_id'
+                 )
+               ) as word_feature
+               on member_word.word=word_feature.query
+               where email='$email' and app_id='$app_id' limit $start, $limit";
+    
+        $result = $this->db->query($sql)->result_array();
+        return $result; 
+    }
+    
+    //添加用户填写的关键词
+    public function add_user_app_keyword($email, $app_id, $word_list)
+    {
+        //分割字符串
+        $delimiters = array(",","，","，"," ");
+        $word_list = $this->multipleExplode($delimiters, $word_list);
+        $word_type = 1;
+        foreach ($word_list as $word)
+        {
+            if ( $word=="" || $word==" ")
+            {
+                continue;
+            }
+            $sql = "replace into member_word 
+                (`email`, `word`, `app_id`, `user_word_type`)
+                values 
+                ('$email', '$word', '$app_id', $word_type)";
+            $this->db2->query($sql);
+        }
+        return 0;
+    }
+
+        //使用多个字符串分割
+    public function multipleExplode($delimiters = array(), $string = '')
+    {
+
+        $mainDelim=$delimiters[count($delimiters)-1]; // dernier
+        array_pop($delimiters);
+        foreach($delimiters as $delimiter)
+        {
+            $string= str_replace($delimiter, $mainDelim, $string);
+        }
+        $result= explode($mainDelim, $string);
+        return $result;
+    }
+}
+?>

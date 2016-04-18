@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/ext/thrift_protocol
+END
+config.m4
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/ext/thrift_protocol/config.m4
+END
+php_thrift_protocol.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/ext/thrift_protocol/php_thrift_protocol.cpp
+END
+php_thrift_protocol.h
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/1111641897067585/!svn/ver/77/12231/2/src/web/app_tongji/resource/thrift/lib/ext/thrift_protocol/php_thrift_protocol.h
+END

@@ -1,0 +1,129 @@
+<?php
+//rest相关服务，主要为rest信息处理
+class App extends CI_Controller {
+
+    //根据app_id获得app的基本信息
+    public function get_app_info()
+    {
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->app_provider->get_app_info($app_id);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得app的一级类别
+    public function get_categories()
+    {
+        $result = $this->app_provider->get_categories();
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得app的游戏二级类别
+    public function get_game_categories()
+    {
+        $result = $this->app_provider->get_game_categories();
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //搜索app
+    public function get_app_search_results()
+    {
+        //搜索词
+        $name = $this->rest_provider->get_request("n");
+        
+        $start = $this->rest_provider->get_request("start");
+        $limit = $this->rest_provider->get_request("limit");
+        
+        $result = $this->app_provider->get_app_search_results($name, $start, $limit);
+        $this->rest_provider->print_rest_json($result);
+    } 
+
+    
+    //在线搜索app api
+    public function get_api_app_search_results()
+    {
+        //搜索词,最多20个结果
+        $name = $this->rest_provider->get_request("n");
+        $result = $this->app_provider->get_api_app_search_results($name);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得所有的app搜索结果，获得离线下载的全量关键词搜索结果数据
+    public function get_all_app_search_results()
+    {
+        //搜索词,最多20个结果
+        $name = $this->rest_provider->get_request("n");
+        $result = $this->app_provider->get_all_app_search_results($name);
+        $this->rest_provider->print_rest_json($result);
+    }
+    //获得app的排行榜
+    //c：类别
+    //rank_type: 榜单类型
+    public function get_app_rank()
+    {
+        //类别
+        $category = $this->rest_provider->get_request("c");
+        $rank_type = $this->rest_provider->get_request("rank_type");
+        
+        $start = $this->rest_provider->get_request("start");
+        $limit = $this->rest_provider->get_request("limit");
+        
+        $result = $this->app_provider->get_app_rank($category, $rank_type, $start, $limit);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得app的排名变化趋势
+    public function get_app_rank_trend()
+    {
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->app_provider->get_app_rank_trend($app_id);
+        $this->rest_provider->print_rest_json($result);
+    }
+    
+    //获得一个app的相关app
+    public function get_app_relate_apps()
+    {
+        $app_id = $this->rest_provider->get_request("app_id");
+        $start = $this->rest_provider->get_request("start");
+        $limit = $this->rest_provider->get_request("limit");
+
+        //根据id获得app信息
+        $app_info = $this->app_provider->get_app_info($app_id);
+
+        //为用户推荐相关app
+        $result = $this->app_provider->get_app_relate_apps($app_info["name"], $start, $limit);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得一个app的用户同时购买的app
+    public function get_app_user_also_buy_apps()
+    {
+        $app_id = $this->rest_provider->get_request("app_id");
+
+        //为用户推荐相关app
+        $result = $this->app_provider->get_app_user_also_buy_apps($app_id);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得一个app的预测信息
+    public function get_app_predict()
+    {
+        $app_id = $this->rest_provider->get_request("app_id");
+
+        //为用户推荐相关app
+        $result = $this->app_provider->get_app_predict($app_id);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得一个app在一个关键词下的搜索位置
+    public function get_app_search_pos()
+    {
+        $app_id = $this->rest_provider->get_request("app_id");
+        $n = $this->rest_provider->get_request("n");
+
+        //为用户推荐相关app
+        $result = $this->app_provider->get_app_search_pos($app_id,$n);
+        $this->rest_provider->print_rest_json($result);
+    } 
+}
+
+?>

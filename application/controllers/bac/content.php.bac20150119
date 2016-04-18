@@ -1,0 +1,39 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//获得app的详细内容
+class Content extends CI_Controller {
+    
+    public function index()
+    {
+        $data["user"] = $this->user_model->get_user_info();
+
+        if ( isset($_REQUEST["name"]) )
+        {
+            $name = $_REQUEST["name"];
+        }
+        else
+        {
+            $name ="微信";
+        } 
+        
+        if ( isset($_REQUEST["type"]) )
+        {
+            $type = $_REQUEST["type"];
+        }
+        else
+        {
+            $type = "角色扮演";
+        }
+        $data["name"] = $name;
+        #echo date("Y-m-d H:i:s", time()). "<br/>";
+        $data["app_list"] = $this->trend_provider->get_app_list($name, $type);
+        //$data["download"] = $this->trend_provider->get_download($name, $type);
+        //$data["download_trend"] = 
+        //    $this->trend_provider->get_download_trend($name, $type);
+        //总下载趋势
+        $data["download_trend"] = $this->predict_provider->get_download_trend($name, $type); 
+        $this->load->view('app2/header_index', $data);
+        $this->load->view('app2/content',$data);
+        $this->load->view('app2/footer_content');
+    }
+}
+?>

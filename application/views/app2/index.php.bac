@@ -1,0 +1,34 @@
+    <div class="container">
+    	<div class="searchBox">
+        <form action="<?php echo base_url();?>main/search" method="GET">
+        <div class="input-group">
+          <input type="text"  name="q" class="form-control">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">搜索</button>
+          </span>
+        </div>
+        </form>
+        </div>
+        <div class="searchCon">
+        <div class="row">
+  <div class="col-md-4">
+  		<div class="appCon img-rounded">
+        <img src="<?php echo base_url();?>resource/images/comp-analysis-b.png" alt="一站优化">
+        <a href="<?php echo base_url();?>user_app"><button type="button" class="btn btn-primary btn-lg btn-block">一站优化</button></a>
+        </div>
+  </div>
+  <div class="col-md-4">
+  		<div class="appCon img-rounded">
+        <img src="<?php echo base_url();?>resource/images/kw-optimization.png" alt="统计排行">
+        <a href="<?php echo base_url();?>main/rank"><button type="button" class="btn btn-primary btn-lg btn-block">统计排行</button></a>
+        </div>
+  </div>
+  <div class="col-md-4">
+  		<div class="appCon img-rounded">
+        <img src="<?php echo base_url();?>resource/images/review-analysis.png" alt="优化工具">
+        <a href="<?php echo base_url();?>aso"><button type="button" class="btn btn-primary btn-lg btn-block">优化工具</button></a>
+        </div>
+  </div>
+</div>
+        </div>
+    </div>

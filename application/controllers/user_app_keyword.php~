@@ -1,0 +1,182 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+//用户app管理页面
+class User_app_keyword extends CI_Controller {
+   
+     //获得用户app关键词列表，用户填写的app关键词
+    public function get_user_app_keywords()
+    {
+        //登录检测
+        $email = $this->check_login_state();
+        $app_id = $this->rest_provider->get_request("app_id");
+        
+       
+        #获得用户关键词
+        $result = $this->user_app_keyword_provider->get_user_app_keywords($email, $app_id, 0, 100);
+
+        $this->rest_provider->print_rest_json($result);
+    }
+    
+    //增加用户关键词
+    public function add_user_app_keyword()
+    {
+        //登录检测
+        $email = $this->check_login_state();
+
+        $app_id = $this->rest_provider->get_request("app_id");
+
+        //用户添加的关键词
+        $name = $this->rest_provider->get_request("n");
+
+        //删除填写的关键词
+        $result = $this->user_app_keyword_provider->add_user_app_keyword($email, $app_id, $name);
+        $this->rest_provider->print_success_json();
+     }    
+    
+
+    //删除用户关键词
+    public function del_user_app_keyword()
+    {
+        //登录检测
+        $email = $this->check_login_state();
+
+        $app_id = $this->rest_provider->get_request("app_id");
+
+        //用户添加的关键词
+        $name = $this->rest_provider->get_request("n");
+
+        //删除填写的关键词
+        $result = $this->user_app_keyword_provider->del_user_app_keyword($email, $app_id, $name);
+        $this->rest_provider->print_success_json();
+     }
+
+    //为用户app推荐新的关键词
+    public function get_user_app_recommend_keywords()
+    {
+         //登录检测
+        $email = $this->check_login_state();
+        $app_id = $this->rest_provider->get_request("app_id");
+
+        //根据id获得app信息
+        $app_info = $this->app_provider->get_app_info($app_id);
+        
+        //为用户推荐新的关键词
+        $result = $this->user_app_keyword_provider
+            ->get_user_app_recommend_keywords($email, $app_id, $app_info["name"]);
+
+        //输出json数据
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得app的可能的关键词,restful
+    public function get_app_possible_keywords()
+    {
+        //登录检测，因为app content本身使用，故暂时不做检测
+        //$email = $this->check_login_state();
+        $app_id = $this->rest_provider->get_request("app_id");
+       
+        //根据id获得app信息
+        //$app_info = $this->app_provider->get_app_info($app_id);
+
+        //$result = $this->user_app_keyword_provider->get_app_possible_keywords($app_info["name"]);
+        $result = $this->user_app_keyword_provider->get_app_possible_keywords($app_id);
+        //输出json数据
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //关键词扩展
+    public function get_app_keyword_expand_keywords()
+    {
+        $name = $this->rest_provider->get_request("n");
+        $result = $this->user_app_keyword_provider->get_app_keyword_expand_keywords($name);
+        $this->rest_provider->print_rest_json($result);
+    } 
+
+    //获得一个app在一个关键词下的搜索曝光度变化趋势
+    public function get_app_keyword_trend()
+    {
+        $name = $this->rest_provider->get_request("n");
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->user_app_keyword_provider->get_app_keyword_trend($app_id, $name);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //获得一个app所有用户填写关键词的总曝光度的趋势图
+    public function get_app_keywords_trend()
+    {
+        //登录检测
+        $email = $this->check_login_state();
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->user_app_keyword_provider->get_app_keywords_trend($email, $app_id);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    
+    //获得用app用户填写每个关键词的热度和搜索结果位置数据
+    public function get_app_keywords_rank_and_pos()
+    {
+        //登录检测
+        $email = $this->check_login_state();
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->user_app_keyword_provider->get_app_keywords_rank_and_pos($email, $app_id);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //更新用户的种子词
+    public function update_user_app_seed_keywords()
+    {
+        //登录检测
+        $email = $this->check_login_state();
+        $app_id = $this->rest_provider->get_request("app_id");
+        $n = $this->rest_provider->get_request("n");
+        $result = $this->user_app_keyword_provider->update_user_app_seed_keywords($email, $app_id, $n);
+        $this->rest_provider->print_success_json();    
+    }
+    
+    //获得用app用户的种子词
+    public function get_user_app_seed_keywords()
+    {
+        //登录检测
+        $email = $this->check_login_state();
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->user_app_keyword_provider->get_user_app_seed_keywords($email, $app_id);
+        $this->rest_provider->print_rest_json($result);
+    }
+    
+    //获得用app用户的种子词,包含各种特征
+    public function get_user_app_seed_keywords_feature()
+    {
+        //登录检测
+        $email = $this->check_login_state();
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->user_app_keyword_provider->get_user_app_seed_keywords_feature($email, $app_id);
+        $this->rest_provider->print_rest_json($result);
+    } 
+    
+    //获得用户最终的关键词user_word_type=1，不包含特征的，主要是提供处理速度
+    public function get_user_app_keywords_no_feature()
+    {
+        //登录检测
+        $email = $this->check_login_state();
+        $app_id = $this->rest_provider->get_request("app_id");
+        $result = $this->user_app_keyword_provider->get_user_app_keywords_no_feature($email, $app_id);
+        $this->rest_provider->print_rest_json($result);
+    }
+    public function test()
+    {
+        $words=array("天天飞车","微信");
+        $this->user_app_keyword_provider->get_words_optimal_prob($words);
+    }
+    /************私有函数***************/
+    //登陆态检测
+    private function check_login_state()
+    {
+        $email = $this->rest_provider->get_request("email");
+
+        //检查用户是否登录,如果未登录则直接跳转到错误页面
+        $this->user_provider->check_login_restful($email);
+        return $email;
+    }
+}
+
+?>

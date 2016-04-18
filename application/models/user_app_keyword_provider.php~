@@ -1,0 +1,675 @@
+<?php
+#user app keyword 模型
+class User_app_keyword_provider extends CI_Model {
+    
+    public function __construct()
+    {
+        $this->load->database();
+        $this->db2 = $this->load->database('user', TRUE); //用户相关的数据，需要读写库
+    }
+
+    //根据用户和appid，获取用户填写的itunes的关键词，没有热度等信息
+    public function get_user_app_keyword_list($email, $app_id)
+    {
+        $sql = "select word from member_word
+            where email='$email' and app_id='$app_id' and user_word_type=1";
+        $result = $this->db->query($sql)->result_array();
+        return $result;
+    }  
+
+    //根据用户和appid，获取用户填写的itunes的关键词，包括热度等信息
+    #输入：app_id
+    #注意，一个用户可能为多个app加同一个关键词，故需要在最后限制app_id
+    #用query in 主要是为了提高查询速度
+    public function get_user_app_keywords($email, $app_id, $start=0,$limit=100)
+    {
+        $sql = "select member_word.word,rank,num,name,user_word_type
+                 from member_word left join 
+                ( select query,rank,num,name
+                from aso_word_rank_new right join aso_result_num 
+                on aso_word_rank_new.word=aso_result_num.query
+                where query in 
+                 (
+                   select word from member_word 
+                   where email='$email' and app_id='$app_id' and user_word_type=1
+                 )
+               ) as word_feature
+               on member_word.word=word_feature.query
+               where email='$email' and app_id='$app_id' and user_word_type=1 
+               order by update_time limit $start, $limit";
+    
+        $result = $this->db->query($sql)->result_array();
+        
+        //获得优化容易度
+        $words = array();
+        foreach ($result as $item)
+        {
+            $words[] = $item["word"];
+        }
+        $words_optimal_prob = $this->get_words_optimal_prob($words);
+        //获得最终的结果，添加aso容易度和优化指数
+        $index = 0;
+        foreach ($result as $item)
+        {
+            $word_optimal_prob = $words_optimal_prob[$item["word"]];
+            $word_rank_normal = $this->normalize_hot_value( (int)$item["rank"] );
+            $aso_index = 100 * $word_optimal_prob * $word_rank_normal;//优化指数
+            $result[$index]["aso_prob"] = round(100*$word_optimal_prob, 1);
+            $result[$index]["aso_index"] = round($aso_index, 1);
+            $index++;
+        }
+        return $result; 
+    }
+    
+    //添加用户填写的关键词
+    public function add_user_app_keyword($email, $app_id, $word_list)
+    {
+        //分割字符串
+        $delimiters = array(",","，","，"," ",'、');
+        $word_list = $this->multipleExplode($delimiters, $word_list);
+        $word_type = 1;
+        foreach ($word_list as $word)
+        {
+            if ( $word=="" || $word==" ")
+            {
+                continue;
+            }
+            $sql = "replace into member_word 
+                (email, word, app_id, user_word_type, update_time)
+                values 
+                ('$email', '$word', '$app_id', $word_type, now())";
+            $this->db2->query($sql);
+        }
+        return 0;
+    }
+
+        //使用多个字符串分割
+    public function multipleExplode($delimiters = array(), $string = '')
+    {
+
+        $mainDelim=$delimiters[count($delimiters)-1]; // dernier
+        array_pop($delimiters);
+        foreach($delimiters as $delimiter)
+        {
+            $string= str_replace($delimiter, $mainDelim, $string);
+        }
+        $result= explode($mainDelim, $string);
+        return $result;
+    }
+    
+        //删除用户关键词,use_word_type=1
+    public function del_user_app_keyword($email, $app_id, $keyword)
+    {
+        $sql = "delete from member_word where 
+            email='$email' and app_id='$app_id' and word='$keyword' and user_word_type=1";
+        $result = $this->db2->query($sql);
+        return 0;
+    }
+
+    //获得为用户推荐的关键词,系统全自动推荐
+    //根据用户填写的竞品app进行关键词推荐
+    public function get_user_app_recommend_keywords($email, $app_id, $app_name, $start=0, $limit=10)
+    {
+                $sql = "select feature_list.word,rank,num,name from
+                (select word,rank,num,name from aso_word_rank_new left join aso_result_num 
+                on aso_word_rank_new.word=aso_result_num.query
+                ) as feature_list right join
+                
+(select word_list.tag as word from
+   ( 
+                     select tag,sum(score) as final_score 
+                     from aso_app_tag right join 
+                     (
+                        select name from member_app_compete 
+                        left join app_info
+                        on member_app_compete.compete_app_id=app_info.app_id
+                        where member_app_compete.app_id='$app_id' and email='$email'
+                        and from_plat='appstore'
+                    ) as app_list
+                    on aso_app_tag.name=app_list.name
+                    where source=2 group by tag order by final_score desc limit 30
+  ) as word_list 
+) as tag_list on feature_list.word=tag_list.word
+               where feature_list.word not in
+               ( select word from member_word where
+               email='$email' and app_id='$app_id')
+order by rank desc limit $start,$limit";
+     
+        $result = $this->db->query($sql)->result_array();
+        $i = 0;
+        foreach ($result as $item)
+        {
+            if ( $result[$i]["num"] == "200" ) //如果是搜索结果的上限
+            {
+                $result[$i]["num"] = "200+";
+            }
+            $i++;
+        }
+       return $result; 
+    }
+
+    //根据种子词，推荐新的关键词
+    //step 1,根据种子词，找到命中的app，查询aso_search_result_new,pos<20
+    //step 2,根据这些app的id，在aso_search_result_new查询，获得其对应关键词，把pos倒数相加，然后排序
+
+    public function get_user_app_word_recommend_keywords()
+    {
+        $sql = "";
+        $result = $this->db->query($sql)->result_array();
+    }
+    //获得为用户推荐的关键词,系统全自动推荐
+    //sql语句含义为，先获得关键词推荐，然后获得关键词的搜索结果数和热度特征
+    //同时需要去掉用户已经填写的关键词
+    public function get_user_app_sys_recommend_keywords($email, $app_id, $app_name, $start=0, $limit=10)
+    {
+        
+        $sql = "select feature_list.word,rank,num,name from
+                (select word,rank,num,name from aso_word_rank_new left join aso_result_num 
+                on aso_word_rank_new.word=aso_result_num.query
+                ) as feature_list right join
+                
+(select word_list.tag as word from
+   ( 
+                     select tag,sum(score) as final_score 
+                     from aso_app_tag right join 
+                    ( 
+                        select distinct(name) from aso_search_result_new where query in 
+                        ( 
+                            select query from  aso_search_result_new 
+                            where name='$app_name' and pos<11 
+                        ) 
+                    ) as app_list
+                    on aso_app_tag.name=app_list.name
+                    and source=2 group by tag order by final_score desc limit 30
+  ) as word_list 
+
+) as tag_list on feature_list.word=tag_list.word 
+               and feature_list.word not in 
+               ( select word from member_word where
+               email='$email' and app_id='$app_id')
+order by rank desc limit $start,$limit";
+        $result = $this->db->query($sql)->result_array();
+        $i = 0;
+        foreach ($result as $item)
+        {
+            if ( $result[$i]["num"] == "200" ) //如果是搜索结果的上限
+            {
+                $result[$i]["num"] = "200+";
+            }
+            $i++;
+        }
+       return $result;
+    }
+
+    //根据app id，获得标签,系统推荐的app关键词
+    public function get_app_possible_keywords($app_id, $start=0, $limit=30)
+    {
+         $sql = "select query,rank,num,name
+            from aso_word_rank_new right join aso_result_num 
+            on aso_word_rank_new.word=aso_result_num.query
+            where query in 
+             (
+                select query from aso_search_result_new where app_id='$app_id'
+             )
+             order by rank desc
+            limit $start, $limit"; 
+        $result = $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    //获得关键词扩展
+    public function get_app_keyword_expand_keywords($name)
+    {
+         $sql = "select query,rank,num,name
+                from aso_word_rank_new right join aso_result_num 
+                on aso_word_rank_new.word=aso_result_num.query
+                where query in 
+                 (
+                    select query from aso_query_expansion where term='$name'
+                 )
+                order by rank desc limit 100";
+        $result = $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    //获得一个app在一个关键词下的搜索曝光度变化趋势
+    public function get_app_keyword_trend($app_id, $name)
+    {
+        //step 1,获得关键词最近一个月的热度数据
+        $day_num = -30;
+        $day_num_str = (string)$day_num . " day";
+        $day_threshold = date('Y-m-d', strtotime($day_num_str));//n天前数据
+        $sql = "select * from aso_word_rank
+            where word='$name' and fetch_date>'$day_threshold'
+            order by fetch_date";
+        $hot_rank_result = $this->db->query($sql)->result_array();
+        
+        //step 2,获得一个app最近一个月在关键词下排名的数据
+        $sql = "select * from aso_search_result
+            where query='$name' and fetch_date>'$day_threshold' and app_id='$app_id'
+            order by fetch_date";
+        $search_result = $this->db->query($sql)->result_array();
+
+        //hichart数据构造
+        $data = array(); 
+        //构造日期数据,x轴数据
+        for ($i=$day_num;$i<0;$i++)
+        {
+            $day_str = (string)$i . " day";
+            $day_pre = date('Y-m-d', strtotime( $day_str ));//n天前
+            $data["xAxis"]["categories"][] = $day_pre ;
+        }
+
+        #构造图表数据
+        $data["chart"]["type"] = "line";
+        $data["title"]["text"] = "'" . $name . "'--趋势图";
+        $data["yAxis"] = array(
+            array("title"=>array("text"=>"搜索热度/结果位置/曝光度")),
+        array("title"=>array("text"=>"搜索曝光度"), "opposite"=>"true")
+        );
+        
+        //构造y轴数据
+        #构造不同类别的数据,一级key是日期， 内容是内容是
+        //搜索热度数据
+        $hot_rank_data = array();
+        foreach ($hot_rank_result as $item)
+        {
+            $hot_rank_data[ $item["fetch_date"] ] = $item["rank"];
+        }
+        
+        //搜索结果位置数据
+        $search_pos_data = array();
+        foreach ($search_result as $item)
+        {
+            $search_pos_data[ $item["fetch_date"] ] = $item["pos"];
+        } 
+        
+        //图表y轴真实数据
+        $y_hot_data = array();
+        $y_hot_data["name"] = "热度";
+        $y_hot_data["yAxis"] = 0;
+        $y_pos_data = array();
+        $y_pos_data["name"] = "搜索排名";
+        $y_pos_data["yAxis"] = 0;
+
+        $y_expose_data = array();
+        $y_expose_data["name"] = "搜索曝光度";
+        $y_expose_data["yAxis"] = 0;
+
+        foreach ( $data["xAxis"]["categories"] as $fetch_date )
+        {
+            //热度数据
+            if ( isset( $hot_rank_data[$fetch_date] ) )
+            {
+                $hot_rank_value = (int)$hot_rank_data[$fetch_date];
+            }
+            else
+            {
+                $hot_rank_value = 1; //如果没有对应的数据，热度假设为1
+            }
+            $y_hot_data["data"][] = $hot_rank_value;
+
+            //排名数据
+            if ( isset( $search_pos_data[$fetch_date] ) )
+            {
+                $search_pos_value = (int)$search_pos_data[$fetch_date];
+            }
+            else
+            {
+                $search_pos_value = 3000;//搜索排名默认为3000
+            }
+            $y_pos_data["data"][] = $search_pos_value;
+            $y_expose_data["data"][] = 100*($this->normalize_hot_value($hot_rank_value) 
+                * $this->normalize_pos_value($search_pos_value));
+        } 
+        $data["series"][] = $y_hot_data;
+        $data["series"][] = $y_pos_data;
+        $data["series"][] = $y_expose_data;
+       return $data;
+    }
+    
+    //获得一个app所有用户填写关键词的总曝光度的趋势图
+    public function get_app_keywords_trend($email, $app_id)
+    {
+        //step 1,获得关键词最近一个月的热度数据
+        $day_num = -30;
+        $day_num_str = (string)$day_num . " day";
+        $day_threshold = date('Y-m-d', strtotime($day_num_str));//n天前数据
+        $sql = "select * from aso_word_rank
+            where word in 
+            (
+               select word from member_word 
+               where email='$email' and app_id='$app_id'
+            ) 
+            and fetch_date>'$day_threshold'
+            order by fetch_date";
+        $hot_rank_result = $this->db->query($sql)->result_array(); 
+        
+        //step 2,获得一个app最近一个月在关键词下排名的数据
+        $sql = "select * from aso_search_result
+            where query in 
+            (
+               select word from member_word 
+               where email='$email' and app_id='$app_id'
+            ) 
+            and fetch_date>'$day_threshold' and app_id='$app_id'
+            order by fetch_date";
+        $search_result = $this->db->query($sql)->result_array();
+        
+        //hichart数据构造
+        $data = array();
+        //构造日期数据,x轴数据
+        for ($i=$day_num;$i<0;$i++)
+        {
+            $day_str = (string)$i . " day";
+            $day_pre = date('Y-m-d', strtotime( $day_str ));//n天前
+            $data["xAxis"]["categories"][] = $day_pre ;
+        }
+
+        #构造图表数据
+        $data["chart"]["type"] = "line";
+        $data["title"]["text"] = "app全部关键词曝光度";
+        $data["yAxis"]["title"]["text"] = "曝光度";
+        
+        //构造y轴数据
+        #构造不同类别的数据,一级key是日期， 内容是内容是每天的所有的词的数据
+        //搜索热度数据
+        $hot_rank_data = array();
+        foreach ($hot_rank_result as $item)
+        {
+            $hot_rank_data[ $item["fetch_date"] ][] = $item["rank"];
+        }
+
+        //搜索结果位置数据
+        $search_pos_data = array();
+        foreach ($search_result as $item)
+        {
+            $search_pos_data[ $item["fetch_date"] ][] = $item["pos"];
+        }
+        
+        $y_expose_data = array();
+        $y_expose_data["name"] = "搜索曝光度";
+ 
+        foreach ( $data["xAxis"]["categories"] as $fetch_date )
+        {
+            //热度数据
+            if ( isset( $hot_rank_data[$fetch_date] ) )
+            {
+                $hot_rank_value = 0;
+                foreach ( $hot_rank_data[$fetch_date] as $value )
+                {
+                    //计算这一天每个词的值    
+                    $hot_rank_value = $hot_rank_value + $this->normalize_hot_value((int)$value);
+                }
+            }
+            else
+            {
+                $hot_rank_value = 0; //如果没有对应的数据，热度假设为1
+            }
+            
+            //排名数据
+            if ( isset( $search_pos_data[$fetch_date] ) )
+            {
+                $search_pos_value = 0;
+                foreach ($search_pos_data[$fetch_date] as $value)
+                {
+                    $search_pos_value = $search_pos_value + $this->normalize_pos_value((int)$value);
+                }
+            }
+            else
+            {
+                $search_pos_value = 0;//搜索排名默认为3000
+            }
+            $y_expose_data["data"][] = 100*( $hot_rank_value * $search_pos_value );
+        }
+        $data["series"][] = $y_expose_data;
+        return $data;
+    }
+    //归一化搜索热度值
+    private function normalize_hot_value($value)
+    {
+        if ($value>=5000)
+        {
+            $normalize_value = 1;
+        }
+        else
+        {
+            $value = (float)($value-1678)/2136;
+            $normalize_value = 0.4058*pow($value,3)-0.6264*pow($value,2)+0.0942*$value+0.8479;
+        }
+        return $normalize_value;
+    }
+
+    //归一化搜索结果位置值
+    private function normalize_pos_value($value)
+    {
+        if ($value>200)
+        {
+            $normalize_value = 0;
+        }
+        else
+        {
+            $value = (float)($value-55)/72.86;
+            $normalize_value = -0.1266*pow($value,3)+0.3284*pow($value,2)-0.3764*$value+0.4454;
+        }
+        return $normalize_value;
+    }
+
+    //获得用户关键词的搜索结果位置信息和搜索词的热度
+    public function get_app_keywords_rank_and_pos($email, $app_id)
+    {
+        //获得搜索热度数据
+        $sql = "select * from aso_word_rank_new
+                where word in 
+                (
+                   select word from member_word 
+                   where email='$email' and app_id='$app_id'
+                )";
+
+        $word_rank_result = $this->db->query($sql)->result_array();//搜索热度结果数据
+        
+        //获得app在搜索结果中的位置信息，部分词的命中结果中可能暂时不包括这个app
+        $sql = "select * from aso_search_result_new
+                where query in 
+                (
+                   select word from member_word 
+                   where email='$email' and app_id='$app_id'
+                )
+                and app_id='$app_id'";
+        $word_pos_result = $this->db->query($sql)->result_array();//搜索热度结果位置数据
+        //处理成dict
+        $word_pos_dict = array();
+        foreach ($word_pos_result as $item)
+        {
+            $word_pos_dict[ $item["query"] ] = (int)$item["pos"];
+        }
+
+        $data = array();
+        foreach ($word_rank_result as $item)
+        {
+            $word = $item["word"];
+            $rank = (int)$item["rank"];
+            //正则化
+            $rank_normalize = $this->normalize_hot_value($rank);
+
+            //获得搜索结果位置信息
+            if ( isset($word_pos_dict[$word]) )
+            {
+                $pos = $word_pos_dict[$word];
+            }
+            else
+            {
+                $pos = 3000;//搜索排名默认为3000
+            }
+            //正则化
+            $pos_normalize =  $this->normalize_pos_value($pos);
+            //搜索曝光度
+            $expose = round( (100*( $rank_normalize * $pos_normalize )), 2);
+            $data[] = array("word"=>"$word","rank"=>$rank,"pos"=>$pos,"expose"=>$expose);
+        }
+        return $data;            
+    }
+
+    //获得一组搜索词的优化容易成都指标，暂时用top6到35的搜索结果app的全部评论
+    //取评论小于1000的比例
+    public function get_words_optimal_prob($words)
+    {
+        if (count($words) == 0 )
+        {
+            return NULL;
+        }
+        $word_list = array();
+        foreach ($words as $word)
+        {
+            $word_list[] =  "'". $word . "'";
+        }
+        $word_list_sql = join(",",$word_list);
+        //获得所有词的命中的所有app
+        //sql，先找到所有词命中的appid，然后与app_info join即可
+        $sql = "select query,count(*)/30 as value from app_info right join
+               (select app_id,query from aso_search_result_new 
+               where query in ($word_list_sql) and pos>5 and pos<36) as app_id_list
+               on app_info.app_id=app_id_list.app_id
+               where user_comment_num<500
+               group by query  
+               ";
+        $result = $this->db->query($sql)->result_array();
+        //做成dict
+        $data = array();
+        foreach ($result as $item)
+        {
+            $data[ $item["query"] ] = (float)$item["value"];
+        }
+        //没有结果的，赋值为0，如"游戏"这个词，全部结果评论数均大于500，sql未命中
+        foreach ($words as $item)
+        {
+            if (!isset($data[$item]))
+            {
+                $data[$item] = 0;
+            }
+        }
+        //var_dump($data);
+        return $data;
+    }
+
+    //新用户的种子词
+    //user_word_type=0：种子词，3：关注词，用于做种子词的备份
+    public function update_user_app_seed_keywords($email, $app_id, $word_list)
+    {
+        //step 1 ,删除该用户，该app对应的关注词，user_word_type=3,只保留一个版本的关注词
+        $sql = "delete from member_word 
+            where email='$email' and user_word_type=3
+            and app_id='$app_id'";
+        $this->db2->query($sql);
+
+        //step 2,将现有用户的种子词user_word_type=0，更新为user_word_type=3
+        $sql = "update member_word set user_word_type=3 
+            where email='$email' and 
+            user_word_type=0 and app_id='$app_id'";
+        $this->db2->query($sql);
+        
+        //step3 ，解析词，并分别更新，可能是多个词隔开的
+        $delimiters = array(",","，","，"," ","、");
+        $word_list = $this->multipleExplode($delimiters, $word_list);
+        $word_type = 1;
+        foreach ($word_list as $word)
+        {
+            if ( $word=="" || $word==" ")
+            {
+                continue;
+            }
+            $sql = "replace INTO member_word 
+                (`email`, `word`, `app_id`, `user_word_type`, `update_time`) 
+                VALUES ('$email','$word','$app_id',0,NOW())";
+            $this->db2->query($sql);
+        }
+        return 0;
+    }
+
+    //得用app用户的种子词
+    public function get_user_app_seed_keywords($email, $app_id)
+    {
+        $sql = "select * from member_word 
+                where email='$email' and 
+                user_word_type=0 and app_id='$app_id'";
+        $result = $this->db->query($sql)->result_array();
+        return $result; 
+    }
+
+    
+    //得用app用户的种子词,包含各种特征
+    public function get_user_app_seed_keywords_feature($email, $app_id)
+    {
+       $sql = "select member_word.word,rank,num,name,user_word_type
+                 from member_word left join 
+                ( select query,rank,num,name
+                from aso_word_rank_new right join aso_result_num 
+                on aso_word_rank_new.word=aso_result_num.query
+                where query in 
+                 (
+                   select word from member_word 
+                   where email='$email' and app_id='$app_id' and user_word_type=0
+                 )
+               ) as word_feature
+               on member_word.word=word_feature.query
+               where email='$email' and app_id='$app_id' and user_word_type=0 
+               order by update_time limit 0,100";
+
+        $result = $this->db->query($sql)->result_array();
+        
+        //获得优化容易度
+        $words = array();
+        foreach ($result as $item)
+        {
+            $words[] = $item["word"];
+        }
+        $words_optimal_prob = $this->get_words_optimal_prob($words);
+        //获得用户iTunes词
+        $user_final_words = $this->get_user_app_keywords_dict($email, $app_id);
+        
+        //获得最终的结果，添加aso容易度和优化指数
+        $index = 0;
+        foreach ($result as $item)
+        {
+            $word_optimal_prob = $words_optimal_prob[$item["word"]];
+            $word_rank_normal = $this->normalize_hot_value( (int)$item["rank"] );
+            $aso_index = 100 * $word_optimal_prob * $word_rank_normal;//优化指数
+            $result[$index]["aso_prob"] = round(100*$word_optimal_prob, 1);
+            $result[$index]["aso_index"] = round($aso_index, 1);
+            if (  array_key_exists($item["word"], $user_final_words) )
+            {
+                $result[$index]["select"] = 1;
+            }
+            else
+            {
+                $result[$index]["select"] = 0;
+            }
+            $index++;
+        }
+        return $result; 
+    }
+
+    //获得用户的最终关键词，返回一个dict
+    public function get_user_app_keywords_dict($email, $app_id)
+    {
+        $sql = "select * from member_word 
+            where email='$email' and app_id ='$app_id' and user_word_type=1";
+        $result = $this->db->query($sql)->result_array();
+        $result_dict = array();
+        foreach ($result as $item)
+        {
+            $result_dict[$item["word"]] = 1;
+        }
+        return $result_dict;
+    }
+
+    //获得用户的最终关键词，不包含feature的，主要为了提供处理速度
+    public function get_user_app_keywords_no_feature($email, $app_id)
+    {
+        $sql = "select * from member_word 
+            where email='$email' and app_id ='$app_id' and user_word_type=1";
+        $result = $this->db->query($sql)->result_array();
+        return $result;
+    }
+}
+?>

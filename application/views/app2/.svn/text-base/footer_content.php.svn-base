@@ -1,0 +1,21 @@
+    <div class="footer">
+    	<p class="copy_link"><a href="http://blog.appbk.com/about/" >关于我们</a> <a href="http://blog.appbk.com/" >团队博客</a></p>
+    	<p>Copyright © 2014-2015 应用宝库 版权所有　沪ICP备12031794号</p>
+    </div>
+</div>
+<script type="text/javascript" src="<?php echo base_url();?>resource/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>resource/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>resource/js/highcharts.js"></script>
+<script type="text/javascript">
+$('.dropdown-toggle').dropdown()
+//tab切换
+$(function () {
+    $('#myTab a').tab('show')
+});
+
+$(function(){
+        $('#container_down_trend').highcharts(<?php echo $download_trend;?>); 
+});
+</script>
+</body>
+</html>

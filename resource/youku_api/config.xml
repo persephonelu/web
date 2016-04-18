@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<ykcid>76e0d8ab091b3e02</ykcid>
+  	<ykcsecret>0134414d0d38be33bb75c1d2830edb90</ykcsecret>
+  	<params>
+  		<category></category>
+  		<period>history</period>
+  		<orderby></orderby>
+  		<publictype></publictype>
+  		<paid></paid>
+ 		<timeless></timeless>
+ 		<timemore></timemore>
+ 		<streamtypes></streamtypes>
+ 		<page>1</page>
+ 		<count>1</count>
+ 	</params>
+</configuration>

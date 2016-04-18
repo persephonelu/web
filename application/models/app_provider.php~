@@ -1,0 +1,357 @@
+<?php
+//用户相关的model
+class App_provider extends CI_Model {
+    public function __construct()
+    {
+        $this->load->database();
+        $this->db2 = $this->load->database('user', TRUE); //用户相关的数据，需要读写库
+    }
+    
+    
+    //根据appid，获得app的详细信息,一个app id可能对应多个app，主要是语言差异
+    public function get_app_info($app_id)
+    {
+        $sql = "select * from app_info 
+            where app_id='$app_id' order by fetch_time desc";
+        $result = $this->db->query($sql)->result_array();
+        return $result[0];
+    }
+
+    #获得appstore全部类别
+    public function get_categories()
+    {
+        $sql = "select * from app_map_classes
+            where from_plat='appstore' and level=1";
+        $result = $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    #获得appstore游戏类别
+    public function get_game_categories()
+    {
+        $sql = "select * from app_map_classes
+            where from_plat='appstore' and level=2";
+        $result = $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    #app搜索,用mysql like搜索name
+    #name 检索词,也可以是appid
+    #start, 记录开始位置
+    #limit，记录个数
+    public function get_app_search_results($name, $start=0, $limit=10)
+    {
+        if ( preg_match("/^\d{6,10}$/", $name) ) //如果输入的是app_id
+        {
+            $sql = "select count(*) as num from app_info
+            where app_id='$name' and from_plat='appstore'";
+            
+            $result = $this->db->query($sql)->result_array();
+            $num = (int)$result["0"]["num"];
+            
+            //如果没有收录此app，下载搜索结果,插入数据库
+            if ($num == 0)
+            {
+                //下载
+                $app_info = $this->download_app_info($app_id);
+                if ( -1 != $app_info)
+                {
+                    $name = $app_info["trackName"];
+                    //插入app_info数据库
+                    $this->insert_app_info($app_info);
+                    $num = 1; 
+                }
+                else
+                {
+                    $num = 0;
+                }
+            }
+            
+            $sql = "select * from app_info
+                    where app_id='$name' and from_plat='appstore'";
+        }
+        else
+        {
+            $sql = "select * from app_info
+            where name like '$name%' and from_plat='appstore'
+            order by download_times desc limit $start,$limit";
+            $num = $this->search_app_search_results_num($name);
+        }
+        $result = $this->db->query($sql)->result_array();
+        return array("num"=>$num,"results"=>$result);
+    }
+
+    
+    #获得app检索结果数
+    public function search_app_search_results_num($name)
+    {
+        $sql = "select count(*) as result_num from app_info
+            where name like '$name%' and from_plat='appstore'";
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]['result_num'];
+    }
+    //获得一个app的预测信息
+    public function get_app_predict($app_id)
+    {
+        $sql = "select app_predict.app_id,app_info.user_comment_num,app_predict.download_times 
+            from app_predict left join app_info
+            on app_predict.app_id=app_info.app_id
+            where app_predict.app_id='$app_id'"; 
+        $result = $this->db->query($sql)->result_array();
+        return $result[0];
+    }
+
+    //获得一个app在一个关键词下的排名位置
+    public function get_app_search_pos($app_id, $n)
+    {
+        $sql = "select pos from aso_search_result_new
+            where app_id='$app_id' and query='$n'";
+        $result = $this->db->query($sql)->result_array();
+        if (!empty($result))
+        {
+            return $result[0];
+        }
+        else
+        {
+            return array("pos"=>"暂无排名");
+        }
+    }
+
+    //获得一个关键词下全部的app搜索结果，即离线下载的全量搜索结果
+    //部分app id可能没有数据
+    public function get_all_app_search_results($name,$start=0,$limit=35)
+    {
+        $sql = "select app_search_results.app_id,name,icon,user_comment_num,pos,
+               download_times from
+            (
+            select aso_search_result_new.app_id, app_info.name,icon,user_comment_num,pos 
+                        from aso_search_result_new
+                        left join app_info
+                        on aso_search_result_new.app_id = app_info.app_id
+                        where query='$name'
+                        order by pos
+                        limit $start, $limit
+            ) as app_search_results
+            left join app_predict 
+            on app_predict.app_id=app_search_results.app_id";
+        
+        $result = $this->db->query($sql)->result_array();
+        $num = $this->get_all_app_search_results_num($name);
+        return array("num"=>$num,"results"=>$result);
+    }
+    //搜索全部结果的结果数目
+    public function get_all_app_search_results_num($name)
+    {
+        $sql = "select count(*) as num from aso_search_result_new
+                where query='$name'";
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]["num"];
+    }
+    //获得app的排行榜
+    //category：类别
+    //rank_type: 榜单类型
+    public function get_app_rank($category, $rank_type, $start=0, $limit=10)
+    {
+        $sql = "select *
+        from app_rank_new
+        where from_plat='appstore'
+        and rank_type='$rank_type' and ori_classes='$category'
+        order by rank
+        limit $start,$limit";
+        $result = $this->db->query($sql)->result_array();
+        $num = $this->get_app_rank_num($category, $rank_type);
+        return array("num"=>$num,"results"=>$result);
+    }
+
+    //获得榜单的结果数
+    public function get_app_rank_num($category, $rank_type)
+    {
+        $sql = "select count(*) as result_num from app_rank_new
+                    where from_plat='appstore'
+                    and ori_classes='$category' and rank_type='$rank_type'";
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]['result_num'];
+    }
+
+    //获得app的排名变化趋势
+    public function get_app_rank_trend($app_id)
+    {
+        //获得day_num天前的数据
+        $day_num = -10;
+        $day_num_str = (string)$day_num . " day";
+        $day_threshold = date('Y-m-d', strtotime( $day_num_str ));//n天前
+        $sql = "select * from app_rank where app_id='$app_id' 
+            and fetch_date>='$day_threshold' and from_plat='appstore' 
+            order by fetch_date";
+        $result = $this->db->query($sql)->result_array();
+
+        #构造图表数据
+        $data = array();
+        $data["chart"]["type"] = "line";
+        $data["title"]["text"] = "app排名";
+        $data["yAxis"]["title"]["text"] = "排名";
+        $data["yAxis"]["reversed"] = "true";
+        //构造日期数据,x轴数据
+        for ($i=$day_num;$i<0;$i++)
+        {
+            $day_str = (string)$i . " day";
+            $day_pre = date('Y-m-d', strtotime( $day_str ));//n天前
+            $data["xAxis"]["categories"][] = $day_pre ;
+        }
+
+        //构造排名数据
+        #构造不同类别的数据,一级key是类别 内容是｛日期:排名}
+        $category_data = array();
+        $rank_type_dict = array( "topfreeapplications"=>"免费榜",
+            "toppaidapplications"=>"收费榜","topgrossingapplications"=>"收入榜" );
+        foreach ($result as $item)
+        {
+            $key = $item["ori_classes"] . "_" . $rank_type_dict[ $item["rank_type"] ];
+            $category_data[$key][ $item["fetch_date"] ] = $item["rank"];
+        }
+
+        //构造y轴数据，如果某个日期没有数据，则设置为200
+        foreach ($category_data as $category=>$day_data)
+        {
+            //处理一个类别的数据
+            $y_data = array();
+            $y_data["name"] = $category; #类别的name
+            foreach ( $data["xAxis"]["categories"] as $fetch_date )
+            {
+                if ( isset( $day_data[$fetch_date] ) )
+                {
+                    $y_data["data"][] = (int)$day_data[$fetch_date];
+                }
+                else
+                {
+                    $y_data["data"][] = 201; //如果没有对应的排名数据，为201，即榜单之外
+                }
+            }
+            $data["series"][] = $y_data;
+        }
+        return $data;
+    }
+
+    //系统推荐的相关app，主要根据搜索结果，推荐相关app
+    public function get_app_relate_apps($name, $start=0, $limit=10)
+    {
+        $sql = "select * from 
+            (select name,sum(0.5+0.5/pos) as score from aso_search_result_new  
+            where query in 
+           (select query from aso_search_result_new where name='$name' and pos<11) 
+           and pos<11 and name !='$name' group by name) as app_list  
+           left join app_info on app_list.name=app_info.name
+           where app_info.from_plat='appstore'
+           order by score desc limit $start,$limit";
+        $result = $this->db->query($sql)->result_array();
+        $num = $this->get_app_relate_app_num($name);
+        return array("num"=>$num,"results"=>$result);
+    } 
+
+    //系统推荐app的数量
+    public function get_app_relate_app_num($name)
+    {
+        $sql = "select count(*) as result_num from (select name from aso_search_result_new  
+            where query in 
+                (select query from aso_search_result_new where name='$name' and pos<11) 
+            and pos<11 and name !='$name' group by name) as app_list";
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]["result_num"];
+    }
+
+    //获得一个app用户同时购买的app
+    public function get_app_user_also_buy_apps($app_id)
+    {
+        $sql = "select * from aso_user_also_buy 
+              left join app_info on 
+              relate_app_id=app_info.app_id
+              where aso_user_also_buy.app_id='$app_id'
+              and app_info.from_plat='appstore'";
+        $result = $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    //根据app_id,下载appstore的app信息
+    public function download_app_info($app_id="784574300")
+    {
+
+        $url = "http://itunes.apple.com/lookup?id=$app_id";
+        $content = file_get_contents($url);
+        $app_info = json_decode($content, true);
+        if ( 0 == $app_info["resultCount"] )
+        {
+            return -1; //如果未能找到结果
+        }
+        else
+        {
+            return $app_info["results"][0];
+        }
+    }
+
+    //在线搜索app信息
+    public function get_api_app_search_results($keyword)
+    {
+        $url = "http://itunes.apple.com/search?entity=software&country=cn&explicit=NO&limit=20&term=$keyword";
+        $content = file_get_contents($url);
+        $result = json_decode($content, true);
+
+        if ($result["resultCount"] == 0)
+        {
+            return array("num"=>0,"results"=>array());
+        }
+        else
+        {
+            //将数据插入数据库
+            foreach ($result["results"] as $app)
+            {
+                $this->add_app($app);
+            }
+        }
+        return $this->get_app_search_results($keyword);
+    }
+    
+    //将从app info api接口获得的app信息插入数据库
+    public function add_app($app_info)
+    {
+        $table_name = "app_info";
+
+        $data["name"] = $app_info["trackName"];
+        $data["package"] = $app_info["trackViewUrl"];
+        $data["icon"] = $app_info["artworkUrl60"];
+        $data["download_url"] = $app_info["trackViewUrl"];
+        $data["size"] = ((int)$app_info["fileSizeBytes"])/(1024*1024);
+
+        if ( isset($app_info["description"]) )
+        {
+            $data["brief"] = $app_info["description"];
+        }
+        
+        $data["from_plat"] = "appstore";
+        $data["version"] = $app_info["version"];
+        $data["ori_classes"] = $app_info["genres"][0];
+        $data["app_id"] = $app_info["trackId"];
+        $data["download_level"] = 5 ;//下载级别，用户涉及的为5
+        $data["update_time"] = $app_info["releaseDate"];
+        $data["company"] = $app_info["artistName"];
+        $result = $this->insert_mysql($data, $table_name);
+        return $result;
+    }    
+    
+    //将k-v数组的数据插入mysql数据库
+    public function insert_mysql($data, $table_name)
+    {
+        $key_list = array();
+        $value_list = array();
+
+        foreach ($data as $key=>$value)
+        {
+            $key_list[] = $key;
+            $value_list[] = "'" . addslashes($value) . "'";//注意去掉mysql禁止符号
+        }
+        $key = implode(",",$key_list);
+        $value = implode(",",$value_list);
+
+        $sql = "replace into  " .  $table_name . " (" . $key . ") values (" . $value . ")";
+        $result = $this->db2->query($sql);
+    }
+}

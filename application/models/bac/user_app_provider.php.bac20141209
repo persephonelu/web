@@ -1,0 +1,287 @@
+<?php
+#user app 模型
+class User_app_provider extends CI_Model {
+    
+    public function __construct()
+    {
+        $this->load->database();
+    }
+
+    //根据用户id获得用户的app
+    public function get_user_app($email, $start)
+    {
+        $limit = 5;
+        $sql = "select * from member_app left join app_info 
+            on member_app.app_id=app_info.app_id
+            where email='$email'
+            group by member_app.app_id
+            order by member_app.id desc limit $start, $limit";
+        $result = $this->db->query($sql)->result_array();
+        //var_dump($result);
+        return $result; 
+    }
+
+    //根据用户id获得用户的app
+    public function get_user_app_num($email)
+    {
+        $sql = "select count(*) as result_num from member_app where email='$email'";
+        $result = $this->db->query($sql)->result_array();
+        //var_dump($result);
+        return $result[0]["result_num"];
+    }
+
+    #mysql 搜索
+    #query 检索词
+    #page 页码，每页默认为10个记录
+    public function search($query, $start=0)
+    {
+        $per_page = 5;//每页结果数目
+        $sql = "select * from app_info
+            where name like '$query%' and from_plat='appstore'
+            order by download_times desc limit $start,$per_page";
+        $result = $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    #获得总的检索结果数目
+    public function search_result_num($query)
+    {
+        /*
+        $sql = "select count(DISTINCT name) as result_num from 
+            app_info where  MATCH (name) AGAINST ('$query' IN BOOLEAN MODE)";
+         */
+        $sql = "select count(*) as result_num from app_info
+            where name like '$query%' and from_plat='appstore'";
+        $result = $this->db->query($sql)->result_array();
+        //var_dump($result);
+        return $result[0]['result_num'];
+    }
+    //添加用户app数据
+    public function add_user_app($email, $app_id)
+    {
+        //根据app_id从app_info中获取app信息
+        $sql = "select * from app_info where app_id='$app_id'";
+        $result = $this->db->query($sql)->result_array();
+
+        $name = "";//app的name
+        $from_plat = "appstore";//平台来源
+        $user_app_type = 1; //用户的app
+        if ( !empty($result) )//如果数据库中有这个记录
+        {
+            $name = $result[0]["name"];
+        }
+        else //如果没有，则下载
+        {
+            //下载
+            $app_info = $this->download_app_info($app_id);
+            if ( -1 != $app_info)
+            {
+                $name = $app_info["trackName"];
+                //插入app_info数据库
+                $this->insert_app_info($app_info);
+            }
+            else
+            {
+                return -1;
+            }    
+        }
+
+        //插入数据库，app_id和email构成uniq key，一个app一个用户只能添加一次
+        $sql = "replace into member_app ( `name`, `from_plat`, `app_id`, `user_app_type`, `email`) 
+            values ('$name', '$from_plat', '$app_id', $user_app_type,'$email')";
+        //echo $sql;
+        $result = $this->db->query($sql);
+        return 0;
+    }
+
+    //根据app_id,下载appstore的app信息
+    public function download_app_info($app_id="784574300")
+    {
+
+        $url = "http://itunes.apple.com/lookup?id=$app_id";
+        $content = file_get_contents($url);
+        $app_info = json_decode($content, true);
+        if ( 0 == $app_info["resultCount"] )
+        {
+            return -1; //如果未能找到结果
+        }
+        else
+        {
+            return $app_info["results"][0];
+        }
+    }
+
+    //将获得的app_info信息插入数据库
+    public function insert_app_info($app_info)
+    {
+        $table_name = "app_info";
+
+        $data["name"] = $app_info["trackName"];
+        $data["package"] = $app_info["trackViewUrl"];
+        $data["icon"] = $app_info["artworkUrl60"];
+        $data["download_url"] = $app_info["trackViewUrl"];
+        $data["size"] = ((int)$app_info["fileSizeBytes"])/(1024*1024);
+        
+        if ( isset($app_info["description"]) )
+        {
+            $data["brief"] = $app_info["description"];
+        }
+        
+        $data["from_plat"] = "appstore";
+        $data["version"] = $app_info["version"];
+        $data["ori_classes"] = $app_info["genres"][0];
+        $data["app_id"] = $app_info["trackId"];
+        $data["download_level"] = 5 ;//下载级别，用户涉及的为5
+        //var_dump($data);
+        $result = $this->mysql_insert($data, $table_name);
+        return $result;
+    }
+
+    //将json格式的数据插入数据库
+    public function mysql_insert($data, $table_name)
+    {
+        $key_list = array();
+        $value_list = array();
+        
+        foreach ($data as $key=>$value)
+        {
+            $key_list[] = $key;
+            $value_list[] = "'" . $value . "'";
+        }
+        $key = implode(",",$key_list);
+        $value = implode(",",$value_list);
+
+        $sql = "replace into  " .  $table_name . " (" . $key . ") values (" . $value . ")";
+        //echo $sql;
+        $result = $this->db->query($sql);
+        //return $result;
+    }
+
+    //删除用户app
+    public function del_user_app($email, $app_id)
+    {
+        $sql = "delete from member_app where
+            email='$email' and app_id='$app_id'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+
+    //根据appid，获得app的详细信息
+    public function get_app_info($app_id)
+    {
+        $sql = "select * from app_info 
+            where app_id='$app_id'";
+        $result = $this->db->query($sql)->result_array();
+        return $result[0];
+    }
+
+    //根据用户和appid，获取用户填写的itunes的关键词
+    public function get_app_itunes_word($email, $app_id)
+    {
+        $sql = "select * from member_word
+            where email='$email' and app_id='$app_id' and user_word_type=1";
+        $result = $this->db->query($sql)->result_array();
+        //var_dump($result);
+        $word_list = array();
+        foreach ( $result as $item)
+        {
+            $word_list[] = $item["word"];
+        }
+        return implode(",", $word_list);
+    }
+    
+    //更新用户填写的itunes关键词
+    public function update_app_itunes_word($email, $app_id, $word_list)
+    {
+        //分割字符串
+        $delimiters = array(",","，","，"," ");
+        $word_list = $this->multipleExplode($delimiters, $word_list);
+        $word_type = 1;
+        foreach ($word_list as $word)
+        {
+            if ( $word=="" || $word==" ")
+            {
+                continue;
+            }
+            $sql = "replace into member_word 
+                (`email`, `word`, `app_id`, `user_word_type`)
+                values 
+                ('$email', '$word', '$app_id', $word_type)";
+            $this->db->query($sql);
+        }
+        return 0;
+    }
+
+    //更新用户期望关键词
+    public function update_app_wish_word($email, $app_id, $word_list)
+    {
+        //分割字符串
+        $delimiters = array(",","，","，"," ");
+        $word_list = $this->multipleExplode($delimiters, $word_list);
+        $word_type = 2;
+        foreach ($word_list as $word)
+        {
+            if ( $word=="" || $word==" ")
+            {
+                continue;
+            }
+            $sql = "replace into member_word 
+                (`email`, `word`, `app_id`, `user_word_type`)
+                values 
+                ('$email', '$word', '$app_id', $word_type)";
+            $this->db->query($sql);
+        }
+        return 0;
+    }
+
+    //根据用户和appid，获取用户希望添加的关键词
+    public function get_app_wish_word($email, $app_id)
+    {
+        $sql = "select * from member_word
+            where email='$email' and app_id='$app_id' and user_word_type=2";
+        $result = $this->db->query($sql)->result_array();
+        //var_dump($result);
+        $word_list = array();
+        foreach ( $result as $item)
+        {
+            $word_list[] = $item["word"];
+        }
+        return implode(",", $word_list);
+    }
+    
+    //使用多个字符串分割
+    public function multipleExplode($delimiters = array(), $string = '')
+    {
+
+        $mainDelim=$delimiters[count($delimiters)-1]; // dernier
+        array_pop($delimiters);
+        foreach($delimiters as $delimiter)
+        {
+            $string= str_replace($delimiter, $mainDelim, $string);
+        }
+        $result= explode($mainDelim, $string);
+        return $result;
+    }
+
+    //根据app，获得系统预测的关键词列表
+    //根据app名称，通过搜索，获得app关键词推荐
+    //第一步，找到相关app
+    //第二步，统计这些相关app的关键词 
+    public function get_app_predict_word($app_name)
+    {
+        $sql = "select tag,sum(score) as final_score from aso_app_tag where name in 
+        ( select name from aso_search_result_new where query in 
+        ( select query from  aso_search_result_new where name='$app_name' and pos<11 ) 
+        group by name ) 
+        and source=2 group by tag order by final_score desc limit 50";
+        $result = $this->db->query($sql)->result_array();
+
+        $word_list = array();
+        foreach ( $result as $item)
+        {
+            $word_list[] = $item["tag"];
+        }
+        return implode(",", $word_list);
+    }
+}
+?>

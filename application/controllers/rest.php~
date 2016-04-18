@@ -1,0 +1,30 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//rest相关服务，主要为rest信息处理
+class Rest extends CI_Controller {
+    
+    //错误信息输出
+    public function error()
+    {
+        //获得error code
+        if ( isset($_REQUEST["ec"]) )
+        {
+            $error_code = $_REQUEST["ec"];
+        }
+        else
+        {
+            $error_code = "-1";
+        }
+            //获得error info
+        if ( isset($_REQUEST["ei"]) )
+        {
+            $error_info = $_REQUEST["ei"];
+        }
+        else
+        {
+            $error_info = "unknown error";
+        }
+
+        $result = ["error_code"=>$error_code,"error_info"=>$error_info];
+        $this->rest_provider->print_rest_json($result);
+    }
+}
