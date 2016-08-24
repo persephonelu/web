@@ -20,7 +20,7 @@ class Word_provider extends CI_Model {
             or aso_result_num.ori_classes3='$category'
             order by rank desc limit $start,$limit";
 
-        if ( $category=="应用" || $category=="总榜")
+        if ( $category=="总榜" || $category=="应用")
         {
             $sql = "select word,rank,num,name,app_id
             from aso_word_rank_new left join aso_result_num 
@@ -61,7 +61,7 @@ class Word_provider extends CI_Model {
         //中国区，cc=cn，美国区cc=us
         if (""==$cc) //如果没有选择国家，默认为cn
         {
-            $cc = "cn";
+            $cc = "us";
         }
 
         $keyword = urlencode($keyword);
@@ -104,13 +104,13 @@ class Word_provider extends CI_Model {
         $data = array();
 
         //step 1,获得关键词最近一个月的热度数据
-        if (""!=$limit) //如果选择了按照距离当前天数
+        if (""!=$limit && 10 != (int)$limit) //如果选择了按照距离当前天数
         {
             $day_num = -1 * (int)$limit;
             $day_num_str = (string)$day_num . " day";
             $day_threshold = date('Y-m-d', strtotime($day_num_str));//n天前数据
             $sql = "select * from aso_word_rank
-            where word='$n' and fetch_date>'$day_threshold'";
+            where word='$n' and fetch_date>='$day_threshold'";
             $hot_rank_result = $this->db->query($sql)->result_array();
 
             //构造日期数据,x轴数据
@@ -120,7 +120,7 @@ class Word_provider extends CI_Model {
                 $day_pre = date('Y-m-d', strtotime( $day_str ));//n天前
                 $data["xAxis"]["categories"][] = $day_pre ;
             }
-            $data["title"]["text"] = "'" . $n . "'--搜索热度趋势图(最近". $limit ."天)";
+            $data["title"]["text"] = "'" . $n . "'-- Search Trending Chart (recent ". $limit ." days)";
         }
         else //如果选择了日期区间
         {
@@ -138,7 +138,7 @@ class Word_provider extends CI_Model {
                 $day_pre = date('Y-m-d', strtotime($end)+$i*24*60*60);//n天前
                 $data["xAxis"]["categories"][] = $day_pre ;
             }
-            $data["title"]["text"] = "'" . $n . "'--搜索热度趋势图(从". $start ."到" . $end .")";
+            $data["title"]["text"] = "'" . $n . "'-- Search Trending Chart (from ". $start ." to " . $end .")";
 
         }
 
@@ -153,7 +153,7 @@ class Word_provider extends CI_Model {
 
         $data["title"]["style"] = "fontFamily:'微软雅黑', 'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体',";
         $data["yAxis"] = array(
-            array("title"=>array("text"=>"搜索热度")),
+            array("title"=>array("text"=>"Search Trending")),
         );
 
         $data["xAxis"]["gridLineWidth"] = 1; //纵向网格线宽度
@@ -177,7 +177,7 @@ class Word_provider extends CI_Model {
 
         //图表y轴真实数据
         $y_hot_data = array();
-        $y_hot_data["name"] = "搜索热度";
+        $y_hot_data["name"] = "Search Trending";
         $y_hot_data["yAxis"] = 0;
 
         $pre_rank_value = NULL; //前一天的rank值
@@ -623,5 +623,62 @@ class Word_provider extends CI_Model {
         }
         $result= explode($mainDelim, $string);
         return $result;
+    }
+
+    //获得关键词覆盖数排行榜
+    public function get_word_cover_rank($c, $start, $limit)
+    {
+        if ( $c=="应用" || $c=="总榜" || $c=="")
+        {
+            $sql = "select word,count(*) as cover_num from
+                    aso_keyword_cover group by word order by cover_num
+                    desc LIMIT $start,$limit";
+        }
+        else
+        {
+            $sql = "select word,count(*) as cover_num from
+                aso_keyword_cover left join aso_result_num
+                on aso_keyword_cover.word=aso_result_num.query
+                where
+                aso_result_num.ori_classes='$c'
+                or aso_result_num.ori_classes1='$c'
+                or aso_result_num.ori_classes2='$c'
+                or aso_result_num.ori_classes3='$c'
+                group by word order by cover_num
+                desc LIMIT $start,$limit";
+        }
+        $result = $this->db->query($sql)->result_array();
+        $num = $this->get_word_cover_rank_num($c);
+        return array("num"=>$num, "results"=>$result);
+    }
+
+    //获得关键词覆盖榜单的个数
+    public function get_word_cover_rank_num($c)
+    {
+        if ( $c=="应用" || $c=="总榜" ||$c=="")
+        {
+            $sql = "select count(*) as num FROM
+                    (
+                        select word from
+                        aso_keyword_cover group by word
+                    ) as word_list";
+        }
+        else
+        {
+            $sql = "select count(*) as num FROM
+                    (
+                        select word from
+                        aso_keyword_cover left join aso_result_num
+                        on aso_keyword_cover.word=aso_result_num.query
+                        where
+                        aso_result_num.ori_classes='$c'
+                        or aso_result_num.ori_classes1='$c'
+                        or aso_result_num.ori_classes2='$c'
+                        or aso_result_num.ori_classes3='$c'
+                        group by word
+                     ) as word_list";
+        }
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]["num"];
     }
 }

@@ -21,7 +21,7 @@ class App_promote_provider extends CI_Model
     public function get_app_best_rank($app_id)
     {
         $sql = "SELECT * FROM app_rank WHERE app_id='$app_id'
-                and ori_classes!='游戏' and fetch_date<'2016-01-01' order by rank";
+                and ori_classes!='game' and fetch_date<'2016-01-01' order by rank";
         $result = $this->db->query($sql)->result_array();
 
         $rank_type_dict = array( "topfreeapplications"=>"免费",

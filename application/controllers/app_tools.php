@@ -73,5 +73,27 @@ class App_tools extends CI_Controller
         $result = $this->app_tools_provider->get_app_rank_update($day);
         $this->rest_provider->print_rest_json($result);
     }
+
+    /*
+    *  获得搜索更新周期
+    */
+    public function get_app_search_update()
+    {
+        $day= $this->rest_provider->get_request("day");//日期,某一天的
+        $result = $this->app_tools_provider->get_app_search_update($day);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    /*
+
+    *  获得一键检测服务
+
+    */
+    public function get_app_check()
+    {
+        $app_id= $this->rest_provider->get_request("app_id");//关键词,一个或者多个
+        $result = $this->app_tools_provider->get_app_check($app_id);
+        $this->rest_provider->print_rest_json($result);
+    }
 }
 ?>

@@ -51,7 +51,8 @@ $active_record = TRUE;
 
 //只读数据库，用于线上服务，目前都使用主库
 #$db['default']['hostname'] = 'rdsv2ibfjqzm3a2.mysql.rds.aliyuncs.com';
-$db['default']['hostname'] = 'rdsraai2yanbira1365007489856.mysql.rds.aliyuncs.com';
+//$db['default']['hostname'] = 'rdsraai2yanbira1365007489856.mysql.rds.aliyuncs.com';
+$db['default']['hostname'] = 'rds5ytuekh6hv4k36g4n.mysql.rds.aliyuncs.com';
 $db['default']['username'] = 'rootali';
 $db['default']['password'] = 'rootali';
 $db['default']['database'] = 'appbk';
@@ -68,7 +69,8 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 //读写数据库,用于写服务
-$db['user']['hostname'] = 'rdsraai2yanbira1365007489856.mysql.rds.aliyuncs.com';
+//$db['user']['hostname'] = 'rdsraai2yanbira1365007489856.mysql.rds.aliyuncs.com';
+$db['user']['hostname'] = 'rds5ytuekh6hv4k36g4n.mysql.rds.aliyuncs.com';
 $db['user']['username'] = 'rootali';
 $db['user']['password'] = 'rootali';
 $db['user']['database'] = 'appbk';
@@ -85,7 +87,7 @@ $db['user']['autoinit'] = TRUE;
 $db['user']['stricton'] = FALSE;
 
 //美国数据库，用于国际业务
-$db['inter']['hostname'] = 'rds5ytuekh6hv4k36g4no.mysql.rds.aliyuncs.com';
+$db['inter']['hostname'] = 'rds5ytuekh6hv4k36g4n.mysql.rds.aliyuncs.com';
 $db['inter']['username'] = 'rootali';
 $db['inter']['password'] = 'rootali';
 $db['inter']['database'] = 'appbk';

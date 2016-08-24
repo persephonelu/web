@@ -66,6 +66,56 @@ class App extends CI_Controller {
         $this->rest_provider->print_rest_json($result);
     }
 
+    //上升最快
+    public function get_app_rank_up()
+    {
+        $category = $this->rest_provider->get_request("c");
+        $rank_type = $this->rest_provider->get_request("rank_type");
+
+        $start = $this->rest_provider->get_request("start");
+        $limit = $this->rest_provider->get_request("limit");
+
+        $result = $this->app_provider->get_app_rank_up($category, $rank_type, $start, $limit);
+        $this->rest_provider->print_rest_json($result);
+    }
+    //下降最快
+    public function get_app_rank_down()
+    {
+        $category = $this->rest_provider->get_request("c");
+        $rank_type = $this->rest_provider->get_request("rank_type");
+
+        $start = $this->rest_provider->get_request("start");
+        $limit = $this->rest_provider->get_request("limit");
+
+        $result = $this->app_provider->get_app_rank_down($category, $rank_type, $start, $limit);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //新上架
+    public function get_relase_app()
+    {
+        $category = $this->rest_provider->get_request("c");
+        $date = $this->rest_provider->get_request("date");
+
+        $start = $this->rest_provider->get_request("start");
+        $limit = $this->rest_provider->get_request("limit");
+
+        $result = $this->app_provider->get_relase_app($category, $date, $start, $limit);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //下架
+    public function get_offline_app()
+    {
+        $date = $this->rest_provider->get_request("date");
+
+        $start = $this->rest_provider->get_request("start");
+        $limit = $this->rest_provider->get_request("limit");
+
+        $result = $this->app_provider->get_offline_app($date, $start, $limit);
+        $this->rest_provider->print_rest_json($result);
+    }
+
     //获得最近24小时,某个app的排行榜变化
     public function get_app_rank_hourly_trend()
     {
@@ -197,6 +247,16 @@ class App extends CI_Controller {
 
         //为用户推荐相关app
         $result = $this->app_provider->get_app_search_hints($n);
+        $this->rest_provider->print_rest_json($result);
+    }
+
+    //给定一个分类榜单和对应排名，给出对应的总榜排名。目前仅支持免费类型的榜单
+    public function get_equal_all_category()
+    {
+        //搜索词,最多20个结果
+        $c = $this->rest_provider->get_request("c");//类别
+        $rank = $this->rest_provider->get_request("rank");//类别排名
+        $result = $this->app_provider->get_equal_all_category($c, $rank);
         $this->rest_provider->print_rest_json($result);
     }
 }

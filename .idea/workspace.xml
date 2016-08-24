@@ -1,0 +1,1349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7415bfd1-8d11-474b-bab7-6664fca4efd9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/0db623bb505092f788a65b0473a16970.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/app.php" afterPath="$PROJECT_DIR$/application/controllers/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/app_promote_provider.php" afterPath="$PROJECT_DIR$/application/models/app_promote_provider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/app_provider.php" afterPath="$PROJECT_DIR$/application/models/app_provider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/app_tools.php" afterPath="$PROJECT_DIR$/application/controllers/app_tools.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/database.php" afterPath="$PROJECT_DIR$/application/config/database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/word.php" afterPath="$PROJECT_DIR$/application/controllers/word.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/word_provider.php" afterPath="$PROJECT_DIR$/application/models/word_provider.php" />
+    </list>
+    <ignored path="web.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="web" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="app_provider.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.019608">
+              <caret line="1050" column="46" selection-start-line="1050" selection-start-column="20" selection-end-line="1050" selection-end-column="46" />
+              <folding>
+                <marker date="1470180057000" expanded="true" signature="683:766" placeholder="select * fro..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="1124:1204" placeholder="select * fro..app_map_classes..." />
+                <marker date="1470180057000" expanded="true" signature="1446:1526" placeholder="select * fro..app_map_classes..." />
+                <marker date="1470180057000" expanded="true" signature="2055:2432" placeholder="SELECT app_i..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="2749:2873" placeholder="select count..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="3823:4025" placeholder="select rank,..app_rank..." />
+                <marker date="1470180057000" expanded="true" signature="3823:4244" placeholder="select rank,..." />
+                <marker date="1470180057000" expanded="true" signature="4084:4226" placeholder="select rank,..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="4333:4562" placeholder="select rank,..app_rank..." />
+                <marker date="1470180057000" expanded="true" signature="4333:4826" placeholder="select rank,..." />
+                <marker date="1470180057000" expanded="true" signature="4621:4808" placeholder="select rank,..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="6430:6543" placeholder="select * fro..app_rank..." />
+                <marker date="1470180057000" expanded="true" signature="6663:6839" placeholder="select app_i..app_rank..." />
+                <marker date="1470180057000" expanded="true" signature="6663:7063" placeholder="select app_i..." />
+                <marker date="1470180057000" expanded="true" signature="6892:7063" placeholder="select app_i..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="7226:7386" placeholder="select * fro..app_rank..." />
+                <marker date="1470180057000" expanded="true" signature="7506:7709" placeholder="select app_i..app_rank..." />
+                <marker date="1470180057000" expanded="true" signature="7506:7960" placeholder="select app_i..." />
+                <marker date="1470180057000" expanded="true" signature="7762:7960" placeholder="select app_i..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="9002:9022" placeholder="..." />
+                <marker date="1470180057000" expanded="true" signature="12129:12381" placeholder="select name,..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="12483:12647" placeholder="select app_i..app_rank..." />
+                <marker date="1470180057000" expanded="true" signature="14888:15484" placeholder="select count..app_id..." />
+                <marker date="1470180057000" expanded="true" signature="14954:15427" placeholder="select app_r..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="16779:16917" placeholder="select app_i..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="17178:17457" placeholder="select name,..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="19001:19601" placeholder="select count..app_id..." />
+                <marker date="1470180057000" expanded="true" signature="19067:19542" placeholder="select app_r..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="19990:20096" placeholder="select app_i..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="20158:20410" placeholder="select app_i..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="20780:20858" placeholder="select count..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="20914:21138" placeholder="select count..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="21639:22380" placeholder="select app_l..app_id..." />
+                <marker date="1470180057000" expanded="true" signature="21705:21917" placeholder="select app_i..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="21992:22128" placeholder="SELECT rank,..app_rank..." />
+                <marker date="1470180057000" expanded="true" signature="22876:23046" placeholder="select count..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="24586:24974" placeholder="select * FRO..app_id..." />
+                <marker date="1470180057000" expanded="true" signature="24636:24784" placeholder="select app_i..app_rank_hourly..." />
+                <marker date="1470180057000" expanded="true" signature="24831:24924" placeholder="select app_i..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="25030:25490" placeholder="select * FRO..app_id..." />
+                <marker date="1470180057000" expanded="true" signature="25080:25255" placeholder="select app_i..app_rank_hourly..." />
+                <marker date="1470180057000" expanded="true" signature="25302:25440" placeholder="select app_i..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="26140:26160" placeholder="..." />
+                <marker date="1470180057000" expanded="true" signature="30187:30286" placeholder="select * fro..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="30530:30629" placeholder="select * fro..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="31586:32002" placeholder="select * fro..ori_classes..." />
+                <marker date="1470180057000" expanded="true" signature="31615:31947" placeholder="select app_r..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="33125:33194" placeholder="select count..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="33873:33936" placeholder="select * fro..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="34101:34241" placeholder="select * fro..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="35526:35606" placeholder="select count..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="37640:38421" placeholder="select app_s..app_id..." />
+                <marker date="1470180057000" expanded="true" signature="37820:38285" placeholder="select aso_s..aso_search_result_new..." />
+                <marker date="1470180057000" expanded="true" signature="38925:39010" placeholder="select count..aso_search_result_new..." />
+                <marker date="1470180057000" expanded="true" signature="39297:39363" placeholder="select count..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="40002:40062" placeholder="select * fro..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="40253:40318" placeholder="select rank ..aso_word_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="42992:43337" placeholder="select app_i..app_rank..." />
+                <marker date="1470180057000" expanded="true" signature="43459:43696" placeholder="SELECT count..app_appstore_comment..." />
+                <marker date="1470180057000" expanded="true" signature="45132:45219" placeholder="select pos f..aso_search_result_new..." />
+                <marker date="1470180057000" expanded="true" signature="45462:45521" placeholder="select * fro..aso_word_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="45764:45821" placeholder="select * fro..aso_result_num..." />
+                <marker date="1470180057000" expanded="true" signature="46791:47269" placeholder="select * fro..app_id..." />
+                <marker date="1470180057000" expanded="true" signature="46847:47115" placeholder="select app_i..aso_search_result_new..." />
+                <marker date="1470180057000" expanded="true" signature="46971:47044" placeholder="select query..aso_search_result_new..." />
+                <marker date="1470180057000" expanded="true" signature="47544:47809" placeholder="select count..*..." />
+                <marker date="1470180057000" expanded="true" signature="47580:47796" placeholder="select * fro..aso_search_result_new..." />
+                <marker date="1470180057000" expanded="true" signature="47660:47733" placeholder="select query..aso_search_result_new..." />
+                <marker date="1470180057000" expanded="true" signature="48020:48245" placeholder="select * fro..aso_user_also_buy..." />
+                <marker date="1470180057000" expanded="true" signature="48441:48677" placeholder="select * fro..aso_user_also_buy..." />
+                <marker date="1470180057000" expanded="true" signature="52738:53286" placeholder="select app_l..app_info..." />
+                <marker date="1470180057000" expanded="true" signature="52827:53201" placeholder="select app_r..app_rank_new..." />
+                <marker date="1470180057000" expanded="true" signature="52922:52981" placeholder="select * fro..app_rank_new..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/app.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.4313726">
+              <caret line="168" column="46" selection-start-line="168" selection-start-column="20" selection-end-line="168" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app_tools.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/controllers/app_tools.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8">
+              <caret line="91" column="33" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/application/config/database.php" />
+        <option value="$PROJECT_DIR$/application/models/app_promote_provider.php" />
+        <option value="$PROJECT_DIR$/application/controllers/word.php" />
+        <option value="$PROJECT_DIR$/application/models/word_provider.php" />
+        <option value="$PROJECT_DIR$/application/models/app_tools_provider.php" />
+        <option value="$PROJECT_DIR$/application/controllers/app.php" />
+        <option value="$PROJECT_DIR$/application/models/app_provider.php" />
+        <option value="$PROJECT_DIR$/application/controllers/app_tools.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="827" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resource" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resource" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ali_search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="38d731bb-cbfb-4d2c-90b1-b7a03062634b" server_name="app_tongji_git">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7415bfd1-8d11-474b-bab7-6664fca4efd9" name="Default" comment="" />
+      <created>1461035907946</created>
+      <option name="number" value="Default" />
+      <updated>1461035907946</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="827" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24305555" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20316623" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/application/models/word_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="486" column="67" selection-start-line="486" selection-start-column="67" selection-end-line="486" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/word.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="59" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="603" column="82" selection-start-line="603" selection-start-column="82" selection-end-line="603" selection-end-column="82" />
+          <folding>
+            <marker date="1470180057000" expanded="true" signature="683:766" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="1124:1204" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="1446:1526" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="2055:2432" placeholder="SELECT app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="2749:2873" placeholder="select count..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4025" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4244" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4084:4226" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4562" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4826" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4621:4808" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="6430:6543" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:6839" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:7063" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="6892:7063" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="7226:7386" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7709" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7960" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="7762:7960" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="9002:9022" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="12129:12381" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="12483:12647" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="14888:15484" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="14954:15427" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="16779:16917" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="17178:17457" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="19001:19601" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="19067:19542" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="19990:20096" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20158:20410" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20780:20858" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20914:21138" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21639:22380" placeholder="select app_l..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="21705:21917" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21992:22128" placeholder="SELECT rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="22876:23046" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="24586:24974" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="24636:24784" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="24831:24924" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="25030:25490" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="25080:25255" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="25302:25440" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="26140:26160" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="30187:30286" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="30530:30629" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="31586:32002" placeholder="select * fro..ori_classes..." />
+            <marker date="1470180057000" expanded="true" signature="31615:31947" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="33125:33194" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="33873:33936" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="34101:34241" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="35526:35606" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="37640:38421" placeholder="select app_s..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="37820:38285" placeholder="select aso_s..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="38925:39010" placeholder="select count..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="39297:39363" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40002:40062" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40253:40318" placeholder="select rank ..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="42992:43337" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="43459:43696" placeholder="SELECT count..app_appstore_comment..." />
+            <marker date="1470180057000" expanded="true" signature="45132:45219" placeholder="select pos f..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="45462:45521" placeholder="select * fro..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="45764:45821" placeholder="select * fro..aso_result_num..." />
+            <marker date="1470180057000" expanded="true" signature="46791:47269" placeholder="select * fro..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="46847:47115" placeholder="select app_i..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="46971:47044" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47544:47809" placeholder="select count..*..." />
+            <marker date="1470180057000" expanded="true" signature="47580:47796" placeholder="select * fro..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47660:47733" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="48020:48245" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="48441:48677" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="52738:53286" placeholder="select app_l..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="52827:53201" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="52922:52981" placeholder="select * fro..app_rank_new..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/rest_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/word_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/word.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="59" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="603" column="82" selection-start-line="603" selection-start-column="82" selection-end-line="603" selection-end-column="82" />
+          <folding>
+            <marker date="1470180057000" expanded="true" signature="683:766" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="1124:1204" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="1446:1526" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="2055:2432" placeholder="SELECT app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="2749:2873" placeholder="select count..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4025" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4244" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4084:4226" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4562" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4826" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4621:4808" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="6430:6543" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:6839" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:7063" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="6892:7063" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="7226:7386" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7709" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7960" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="7762:7960" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="9002:9022" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="12129:12381" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="12483:12647" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="14888:15484" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="14954:15427" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="16779:16917" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="17178:17457" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="19001:19601" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="19067:19542" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="19990:20096" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20158:20410" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20780:20858" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20914:21138" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21639:22380" placeholder="select app_l..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="21705:21917" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21992:22128" placeholder="SELECT rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="22876:23046" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="24586:24974" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="24636:24784" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="24831:24924" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="25030:25490" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="25080:25255" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="25302:25440" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="26140:26160" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="30187:30286" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="30530:30629" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="31586:32002" placeholder="select * fro..ori_classes..." />
+            <marker date="1470180057000" expanded="true" signature="31615:31947" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="33125:33194" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="33873:33936" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="34101:34241" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="35526:35606" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="37640:38421" placeholder="select app_s..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="37820:38285" placeholder="select aso_s..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="38925:39010" placeholder="select count..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="39297:39363" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40002:40062" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40253:40318" placeholder="select rank ..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="42992:43337" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="43459:43696" placeholder="SELECT count..app_appstore_comment..." />
+            <marker date="1470180057000" expanded="true" signature="45132:45219" placeholder="select pos f..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="45462:45521" placeholder="select * fro..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="45764:45821" placeholder="select * fro..aso_result_num..." />
+            <marker date="1470180057000" expanded="true" signature="46791:47269" placeholder="select * fro..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="46847:47115" placeholder="select app_i..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="46971:47044" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47544:47809" placeholder="select count..*..." />
+            <marker date="1470180057000" expanded="true" signature="47580:47796" placeholder="select * fro..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47660:47733" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="48020:48245" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="48441:48677" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="52738:53286" placeholder="select app_l..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="52827:53201" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="52922:52981" placeholder="select * fro..app_rank_new..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/rest_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/word_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="486" column="67" selection-start-line="486" selection-start-column="67" selection-end-line="486" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="146" column="58" selection-start-line="146" selection-start-column="39" selection-end-line="146" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1470180057000" expanded="true" signature="683:766" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="1124:1204" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="1446:1526" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="2055:2432" placeholder="SELECT app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="2749:2873" placeholder="select count..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4025" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4244" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4084:4226" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4562" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4826" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4621:4808" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="6430:6543" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:6839" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:7063" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="6892:7063" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="7226:7386" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7709" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7960" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="7762:7960" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="9002:9022" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="12129:12381" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="12483:12647" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="14888:15484" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="14954:15427" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="16779:16917" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="17178:17457" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="19001:19601" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="19067:19542" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="19990:20096" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20158:20410" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20780:20858" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20914:21138" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21639:22380" placeholder="select app_l..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="21705:21917" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21992:22128" placeholder="SELECT rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="22876:23046" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="24586:24974" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="24636:24784" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="24831:24924" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="25030:25490" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="25080:25255" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="25302:25440" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="26140:26160" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="30187:30286" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="30530:30629" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="31586:32002" placeholder="select * fro..ori_classes..." />
+            <marker date="1470180057000" expanded="true" signature="31615:31947" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="33125:33194" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="33873:33936" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="34101:34241" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="35526:35606" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="37640:38421" placeholder="select app_s..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="37820:38285" placeholder="select aso_s..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="38925:39010" placeholder="select count..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="39297:39363" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40002:40062" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40253:40318" placeholder="select rank ..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="42992:43337" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="43459:43696" placeholder="SELECT count..app_appstore_comment..." />
+            <marker date="1470180057000" expanded="true" signature="45132:45219" placeholder="select pos f..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="45462:45521" placeholder="select * fro..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="45764:45821" placeholder="select * fro..aso_result_num..." />
+            <marker date="1470180057000" expanded="true" signature="46791:47269" placeholder="select * fro..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="46847:47115" placeholder="select app_i..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="46971:47044" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47544:47809" placeholder="select count..*..." />
+            <marker date="1470180057000" expanded="true" signature="47580:47796" placeholder="select * fro..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47660:47733" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="48020:48245" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="48441:48677" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="52738:53286" placeholder="select app_l..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="52827:53201" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="52922:52981" placeholder="select * fro..app_rank_new..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/ali_search/CloudsearchClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="272" column="39" selection-start-line="272" selection-start-column="39" selection-end-line="272" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="132" column="56" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1470180057000" expanded="true" signature="683:766" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="1124:1204" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="1446:1526" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="2055:2432" placeholder="SELECT app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="2749:2873" placeholder="select count..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4025" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4244" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4084:4226" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4562" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4826" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4621:4808" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="6430:6543" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:6839" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:7063" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="6892:7063" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="7226:7386" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7709" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7960" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="7762:7960" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="9002:9022" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="12129:12381" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="12483:12647" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="14888:15484" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="14954:15427" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="16779:16917" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="17178:17457" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="19001:19601" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="19067:19542" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="19990:20096" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20158:20410" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20780:20858" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20914:21138" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21639:22380" placeholder="select app_l..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="21705:21917" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21992:22128" placeholder="SELECT rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="22876:23046" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="24586:24974" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="24636:24784" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="24831:24924" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="25030:25490" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="25080:25255" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="25302:25440" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="26140:26160" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="30187:30286" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="30530:30629" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="31586:32002" placeholder="select * fro..ori_classes..." />
+            <marker date="1470180057000" expanded="true" signature="31615:31947" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="33125:33194" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="33873:33936" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="34101:34241" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="35526:35606" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="37640:38421" placeholder="select app_s..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="37820:38285" placeholder="select aso_s..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="38925:39010" placeholder="select count..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="39297:39363" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40002:40062" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40253:40318" placeholder="select rank ..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="42992:43337" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="43459:43696" placeholder="SELECT count..app_appstore_comment..." />
+            <marker date="1470180057000" expanded="true" signature="45132:45219" placeholder="select pos f..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="45462:45521" placeholder="select * fro..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="45764:45821" placeholder="select * fro..aso_result_num..." />
+            <marker date="1470180057000" expanded="true" signature="46791:47269" placeholder="select * fro..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="46847:47115" placeholder="select app_i..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="46971:47044" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47544:47809" placeholder="select count..*..." />
+            <marker date="1470180057000" expanded="true" signature="47580:47796" placeholder="select * fro..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47660:47733" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="48020:48245" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="48441:48677" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="52738:53286" placeholder="select app_l..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="52827:53201" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="52922:52981" placeholder="select * fro..app_rank_new..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/ali_search/CloudsearchClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="272" column="39" selection-start-line="272" selection-start-column="39" selection-end-line="272" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="64" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="780" column="46" selection-start-line="780" selection-start-column="20" selection-end-line="780" selection-end-column="46" />
+          <folding>
+            <marker date="1470180057000" expanded="true" signature="683:766" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="1124:1204" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="1446:1526" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="2055:2432" placeholder="SELECT app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="2749:2873" placeholder="select count..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4025" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4244" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4084:4226" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4562" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4826" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4621:4808" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="6430:6543" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:6839" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:7063" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="6892:7063" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="7226:7386" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7709" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7960" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="7762:7960" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="9002:9022" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="12129:12381" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="12483:12647" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="14888:15484" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="14954:15427" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="16779:16917" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="17178:17457" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="19001:19601" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="19067:19542" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="19990:20096" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20158:20410" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20780:20858" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20914:21138" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21639:22380" placeholder="select app_l..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="21705:21917" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21992:22128" placeholder="SELECT rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="22876:23046" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="24586:24974" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="24636:24784" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="24831:24924" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="25030:25490" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="25080:25255" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="25302:25440" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="26140:26160" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="30187:30286" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="30530:30629" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="31586:32002" placeholder="select * fro..ori_classes..." />
+            <marker date="1470180057000" expanded="true" signature="31615:31947" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="33125:33194" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="33873:33936" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="34101:34241" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="35526:35606" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="37640:38421" placeholder="select app_s..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="37820:38285" placeholder="select aso_s..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="38925:39010" placeholder="select count..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="39297:39363" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40002:40062" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40253:40318" placeholder="select rank ..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="42992:43337" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="43459:43696" placeholder="SELECT count..app_appstore_comment..." />
+            <marker date="1470180057000" expanded="true" signature="45132:45219" placeholder="select pos f..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="45462:45521" placeholder="select * fro..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="45764:45821" placeholder="select * fro..aso_result_num..." />
+            <marker date="1470180057000" expanded="true" signature="46791:47269" placeholder="select * fro..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="46847:47115" placeholder="select app_i..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="46971:47044" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47544:47809" placeholder="select count..*..." />
+            <marker date="1470180057000" expanded="true" signature="47580:47796" placeholder="select * fro..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47660:47733" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="48020:48245" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="48441:48677" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="52738:53286" placeholder="select app_l..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="52827:53201" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="52922:52981" placeholder="select * fro..app_rank_new..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/ali_search/CloudsearchClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="272" column="39" selection-start-line="272" selection-start-column="39" selection-end-line="272" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="2" selection-start-line="71" selection-start-column="2" selection-end-line="71" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="38" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="147" column="59" selection-start-line="147" selection-start-column="59" selection-end-line="147" selection-end-column="59" />
+          <folding>
+            <marker date="1470180057000" expanded="true" signature="683:766" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="1124:1204" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="1446:1526" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="2055:2432" placeholder="SELECT app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="2749:2873" placeholder="select count..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4025" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4244" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4084:4226" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4562" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4826" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4621:4808" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="6430:6543" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:6839" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:7063" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="6892:7063" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="7226:7386" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7709" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7960" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="7762:7960" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="9002:9022" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="12129:12381" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="12483:12647" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="14888:15484" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="14954:15427" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="16779:16917" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="17178:17457" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="19001:19601" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="19067:19542" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="19990:20096" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20158:20410" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20780:20858" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20914:21138" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21639:22380" placeholder="select app_l..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="21705:21917" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21992:22128" placeholder="SELECT rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="22876:23046" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="24586:24974" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="24636:24784" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="24831:24924" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="25030:25490" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="25080:25255" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="25302:25440" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="26140:26160" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="30187:30286" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="30530:30629" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="31586:32002" placeholder="select * fro..ori_classes..." />
+            <marker date="1470180057000" expanded="true" signature="31615:31947" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="33125:33194" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="33873:33936" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="34101:34241" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="35526:35606" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="37640:38421" placeholder="select app_s..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="37820:38285" placeholder="select aso_s..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="38925:39010" placeholder="select count..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="39297:39363" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40002:40062" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40253:40318" placeholder="select rank ..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="42992:43337" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="43459:43696" placeholder="SELECT count..app_appstore_comment..." />
+            <marker date="1470180057000" expanded="true" signature="45132:45219" placeholder="select pos f..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="45462:45521" placeholder="select * fro..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="45764:45821" placeholder="select * fro..aso_result_num..." />
+            <marker date="1470180057000" expanded="true" signature="46791:47269" placeholder="select * fro..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="46847:47115" placeholder="select app_i..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="46971:47044" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47544:47809" placeholder="select count..*..." />
+            <marker date="1470180057000" expanded="true" signature="47580:47796" placeholder="select * fro..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47660:47733" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="48020:48245" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="48441:48677" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="52738:53286" placeholder="select app_l..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="52827:53201" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="52922:52981" placeholder="select * fro..app_rank_new..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/ali_search/CloudsearchClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="272" column="39" selection-start-line="272" selection-start-column="39" selection-end-line="272" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="39" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app_promote.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_comment_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_promote_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_comment_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_promote_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_comment_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.056179777">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="2" selection-start-line="71" selection-start-column="2" selection-end-line="71" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_promote_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.25">
+          <caret line="23" column="81" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app_promote.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/ali_search/CloudsearchClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="272" column="39" selection-start-line="272" selection-start-column="39" selection-end-line="272" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/rest_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_tools_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33382353">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="37" />
+          <folding>
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select group..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select word,..aso_appstore_hot_word..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select max(f..aso_appstore_hot_word..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select query..aso_word_rank_new..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select word,..aso_word_rank_new..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select aso_r..aso_result_num..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select query..aso_search_result_new_recommend..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select aso_s..aso_search_result_new_recommend..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select query..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select * fro..aso_result_num..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="select md5( ..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1469491157000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/word_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25742576">
+          <caret line="655" column="47" selection-start-line="655" selection-start-column="47" selection-end-line="655" selection-end-column="47" />
+          <folding>
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word,..aso_word_rank_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word,..aso_word_rank_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_word_rank_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_word_rank_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="SELECT word,..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="SELECT word,..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select * fro..aso_word_rank..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select * fro..aso_word_rank..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select * fro..aso_word_rank_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select * fro..query..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="SELECT query..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="SELECT query..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select query..aso_search_result..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select * fro..aso_search_result..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select * fro..aso_search_result..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select query..aso_search_result..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select * fro..query..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select query..aso_search_result_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select aso_r..aso_refer_word..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word,..aso_word_rank_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word_..query..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select query..aso_search_result_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word_..query..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select query..aso_search_result..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word_..query..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select query..aso_search_result_recommend..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result_new..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..aso_search_result_recommend..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word,..aso_keyword_cover..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word,..aso_keyword_cover..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..word..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word ..aso_keyword_cover..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select count..word..." />
+            <marker date="1468901943000" expanded="true" signature="-1:-1" placeholder="select word ..aso_keyword_cover..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/word.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7666195">
+          <caret line="114" column="59" selection-start-line="114" selection-start-column="40" selection-end-line="114" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.4313726">
+          <caret line="168" column="46" selection-start-line="168" selection-start-column="20" selection-end-line="168" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/app_provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.019608">
+          <caret line="1050" column="46" selection-start-line="1050" selection-start-column="20" selection-end-line="1050" selection-end-column="46" />
+          <folding>
+            <marker date="1470180057000" expanded="true" signature="683:766" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="1124:1204" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="1446:1526" placeholder="select * fro..app_map_classes..." />
+            <marker date="1470180057000" expanded="true" signature="2055:2432" placeholder="SELECT app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="2749:2873" placeholder="select count..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4025" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="3823:4244" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4084:4226" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4562" placeholder="select rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="4333:4826" placeholder="select rank,..." />
+            <marker date="1470180057000" expanded="true" signature="4621:4808" placeholder="select rank,..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="6430:6543" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:6839" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="6663:7063" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="6892:7063" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="7226:7386" placeholder="select * fro..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7709" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="7506:7960" placeholder="select app_i..." />
+            <marker date="1470180057000" expanded="true" signature="7762:7960" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="9002:9022" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="12129:12381" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="12483:12647" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="14888:15484" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="14954:15427" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="16779:16917" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="17178:17457" placeholder="select name,..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="19001:19601" placeholder="select count..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="19067:19542" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="19990:20096" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20158:20410" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20780:20858" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="20914:21138" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21639:22380" placeholder="select app_l..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="21705:21917" placeholder="select app_i..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="21992:22128" placeholder="SELECT rank,..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="22876:23046" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="24586:24974" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="24636:24784" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="24831:24924" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="25030:25490" placeholder="select * FRO..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="25080:25255" placeholder="select app_i..app_rank_hourly..." />
+            <marker date="1470180057000" expanded="true" signature="25302:25440" placeholder="select app_i..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="26140:26160" placeholder="..." />
+            <marker date="1470180057000" expanded="true" signature="30187:30286" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="30530:30629" placeholder="select * fro..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="31586:32002" placeholder="select * fro..ori_classes..." />
+            <marker date="1470180057000" expanded="true" signature="31615:31947" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="33125:33194" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="33873:33936" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="34101:34241" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="35526:35606" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="37640:38421" placeholder="select app_s..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="37820:38285" placeholder="select aso_s..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="38925:39010" placeholder="select count..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="39297:39363" placeholder="select count..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40002:40062" placeholder="select * fro..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="40253:40318" placeholder="select rank ..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="42992:43337" placeholder="select app_i..app_rank..." />
+            <marker date="1470180057000" expanded="true" signature="43459:43696" placeholder="SELECT count..app_appstore_comment..." />
+            <marker date="1470180057000" expanded="true" signature="45132:45219" placeholder="select pos f..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="45462:45521" placeholder="select * fro..aso_word_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="45764:45821" placeholder="select * fro..aso_result_num..." />
+            <marker date="1470180057000" expanded="true" signature="46791:47269" placeholder="select * fro..app_id..." />
+            <marker date="1470180057000" expanded="true" signature="46847:47115" placeholder="select app_i..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="46971:47044" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47544:47809" placeholder="select count..*..." />
+            <marker date="1470180057000" expanded="true" signature="47580:47796" placeholder="select * fro..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="47660:47733" placeholder="select query..aso_search_result_new..." />
+            <marker date="1470180057000" expanded="true" signature="48020:48245" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="48441:48677" placeholder="select * fro..aso_user_also_buy..." />
+            <marker date="1470180057000" expanded="true" signature="52738:53286" placeholder="select app_l..app_info..." />
+            <marker date="1470180057000" expanded="true" signature="52827:53201" placeholder="select app_r..app_rank_new..." />
+            <marker date="1470180057000" expanded="true" signature="52922:52981" placeholder="select * fro..app_rank_new..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/app_tools.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8">
+          <caret line="91" column="33" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

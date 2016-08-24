@@ -105,5 +105,15 @@ class  Word extends CI_Controller {
         $result = $this->word_provider->get_word_suggetion($n);
         $this->rest_provider->print_rest_json($result);
     }
+
+    //获得关键词覆盖数排行榜
+    public function get_word_cover_rank()
+    {
+        $c = $this->rest_provider->get_request("c"); //类别
+        $start = $this->rest_provider->get_request("start");
+        $limit = $this->rest_provider->get_request("limit");
+        $result = $this->word_provider->get_word_cover_rank($c, $start, $limit);
+        $this->rest_provider->print_rest_json($result);
+    }
 }
 ?>

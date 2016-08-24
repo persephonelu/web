@@ -57,10 +57,17 @@ class App_provider extends CI_Model {
     //rank_type: 榜单类型
     public function get_app_rank($category, $rank_type, $start=0, $limit=10)
     {
+        /*
         if ($category=="总榜" || $category=="应用")
         {
             $category = "应用"; //兼容以前的类别命名
         }
+        */
+        if ($category == "总榜" || $category == "应用")
+        {
+            $category = "app";
+        }
+
         $sql = "SELECT app_info.name, app_info.icon, app_info.app_id,rank,
                 app_rank_new.fetch_time
                 FROM app_info
@@ -89,15 +96,21 @@ class App_provider extends CI_Model {
     {
         #构造图表数据
         $data = array();
+
         if (10!=(int)$limit && ""!=$limit) //如果没有选择开始日期,只选择了距离当前的时间
         {
+            /*
             if ( (int)$limit<=7 ) //如果是7天内的,返回小时级别数据
             {
                 return $this->get_app_rank_hourly_trend($app_id,24*(int)($limit), $rank_type);
             }
-
+            */
             //获得day_num天前的数据
-            $day_num = -1 * (int)($limit);
+            if ((int)$limit > 15)
+            {
+                $limit = 15;
+            }
+            $day_num = -1 * (int)($limit - 1);
             $day_num_str = (string)$day_num . " day";
             $day_threshold = date('Y-m-d', strtotime($day_num_str));//n天前
 
@@ -109,8 +122,7 @@ class App_provider extends CI_Model {
                 and fetch_date>='$day_threshold'
                 UNION
                 (
-                  select rank,ori_classes,rank_type,
-                  DATE_FORMAT(fetch_time, '%Y-%m-%d') as fetch_date
+                  select rank,ori_classes,rank_type,DATE_FORMAT(fetch_time, '%Y-%m-%d') as fetch_date
                   from app_rank_new where app_id='$app_id'
                 )
                 ";
@@ -129,7 +141,7 @@ class App_provider extends CI_Model {
                 )
                 ";
             }
-            $data["title"]["text"] = "app排名(最近" .(string)$limit ."天)";
+            $data["title"]["text"] = "app rank (recent " .(string)$limit ." days)";
             //构造日期数据,x轴数据
             for ($i=$day_num;$i<1;$i++)
             {
@@ -142,11 +154,12 @@ class App_provider extends CI_Model {
         {
             //如果选择了今天的日期,返回最近24小时的数据
             $cur_day = date('Y-m-d');
+
             if ($start==$cur_day && $end==$cur_day)
             {
                 return $this->get_app_rank_hourly_trend($app_id,24, $rank_type);
             }
-
+            /*
             //如果选择了昨天的数据,返回最近48小时的以内的数据
             $pre_day = date('Y-m-d', time()-24*60*60);
             if ($start==$pre_day && $end == $pre_day)
@@ -161,7 +174,7 @@ class App_provider extends CI_Model {
             {
                 return $this->get_app_rank_hourly_trend($app_id,$interval, $rank_type);
             }
-
+            */
 
             //如果两个日期一致,把start往前提前一天
             if ($start == $end)
@@ -206,7 +219,7 @@ class App_provider extends CI_Model {
                     from app_rank_new where app_id='$app_id' and rank_type='$rank_type'";
                 }
             }
-            $data["title"]["text"] = "app排名(从" .$start ."到".$end.")";
+            $data["title"]["text"] = "app rank (from" .$start ." to ".$end.")";
             //构造日期数据,x轴数据
             $day_num = -1*(round( ( strtotime($end)-strtotime($start) )/(3600*24) ));
             for ($i=$day_num;$i<=0;$i++)
@@ -222,8 +235,8 @@ class App_provider extends CI_Model {
         //$data = array();
         $data["chart"]["type"] = "spline";
         //$data["title"]["text"] = "app排名(最近" .(string)$limit ."天)";
-        $data["title"]["style"] = "fontFamily:'微软雅黑', 'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体',";
-        $data["yAxis"]["title"]["text"] = "排名";
+        $data["title"]["style"] = "fontFamily:'Microsoft YaHei', 'Microsoft YaHei',Arial,Helvetica,sans-serif,'Song typeface',";
+        $data["yAxis"]["title"]["text"] = "Rank";
         $data["yAxis"]["reversed"] = "true";
 
         $data["tooltip"]["crosshairs"] = array(array("enabled"=>"true","width"=>1,"color"=>"#d8d8d8"));
@@ -245,14 +258,14 @@ class App_provider extends CI_Model {
         //构造排名数据
         #构造不同类别的数据,一级key是类别 内容是｛日期:排名}
         $category_data = array();
-        $rank_type_dict = array( "topfreeapplications"=>"免费",
-            "toppaidapplications"=>"付费","topgrossingapplications"=>"畅销" );
+        $rank_type_dict = array( "topfreeapplications"=>"free",
+            "toppaidapplications"=>"paid","topgrossingapplications"=>"top grossing" );
 
         foreach ($result as $item)
         {
-            if ($item["ori_classes"]=="应用")
+            if ($item["ori_classes"]=="app")
             {
-                $key = "总榜_" . $rank_type_dict[ $item["rank_type"] ];
+                $key = "app_" . $rank_type_dict[ $item["rank_type"] ];
             }
             else
             {
@@ -315,14 +328,316 @@ class App_provider extends CI_Model {
         return $data;
     }
 
+    //上升最快
+    public function get_app_rank_up($category, $rank_type, $start, $limit)
+    {
+        if ($category=="总榜" || $category=="应用")
+        {
+            $category = "app"; //兼容以前的类别命名
+        }
+
+        $cur_date = date("Y-m-d",time());
+        //当前最新的榜单情况
+        $sql = "select name,icon,rank,app_rank_new.app_id
+                from app_info RIGHT join app_rank_new
+                on app_rank_new.app_id=app_info.app_id
+                where app_rank_new.ori_classes='$category'
+                and rank_type='$rank_type'";
+        $cur_result = $this->db->query($sql)->result_array();
+
+        //今天凌晨的榜单情况
+        $sql = "select app_id,rank from app_rank
+                where ori_classes='$category'
+                and rank_type='$rank_type'
+                and fetch_date='$cur_date'";
+        $pre_result = $this->db->query($sql)->result_array();
+
+        $pre_result_dict = array();
+        foreach ($pre_result as $item)
+        {
+            $pre_result_dict[$item["app_id"]] = $item["rank"];
+        }
+
+        //比较,以当前为基准,如果之前有排名,取之前排名和当前排名的差,如果是正的
+        //表示上升,添加到结果中.
+        //如果之前没有排名,当做1500,进行处理
+        $num = 0;//结果数
+        $result = array();
+        foreach ($cur_result as $item)
+        {
+            if (array_key_exists($item["app_id"], $pre_result_dict))
+            {
+                //如果之前包含当前的 app id
+                $dif = (int)$pre_result_dict[ $item["app_id"] ] - (int)$item["rank"];
+                if ($dif>0)
+                {
+                    $item["up"] = $dif;
+                    $result[] = $item;
+                    $num ++;
+                }
+            }
+            else //如果之前不包含当前的 app id
+            {
+                $dif = 1501 - (int)$item["rank"];
+                $item["up"] = $dif;
+                $result[] = $item;
+                $num ++;
+            }
+        }
+
+        //排序
+        $final_result = $this->array_sort($result, "up", "desc");
+
+
+        /*
+        $sql = "select name,icon,app_list.* FROM app_info LEFT JOIN
+                (
+                    select app_rank_new.app_id,app_rank_new.rank,(app_rank.rank-app_rank_new.rank) as up from app_rank_new right join
+                    app_rank on app_rank_new.app_id=app_rank.app_id
+                    where app_rank_new.ori_classes='$category'
+                    and app_rank_new.rank_type='$rank_type'
+                    and app_rank.ori_classes='$category'
+                    and app_rank.rank_type='$rank_type'
+                    and app_rank.fetch_date='$cur_date'
+                ) as app_list
+                on `app_info`.app_id=app_list.app_id
+                where up>0
+                ORDER BY up DESC limit $start,$limit";
+        $result = $this->db->query($sql)->result_array();
+        */
+        //$num = $this->get_app_rank_up_num($category, $rank_type,$cur_date);
+        return array("status"=>0,"msg"=>"success","num"=>$num,"results"=>array_slice($final_result, $start, $limit));
+    }
+
+    public function get_app_rank_up_num($category, $rank_type,$cur_date)
+    {
+        $sql = "select count(*) as num from
+                (
+                    select app_rank_new.app_id,app_rank_new.rank,(app_rank.rank-app_rank_new.rank) as up from app_rank_new right join
+                    app_rank on app_rank_new.app_id=app_rank.app_id
+                    where app_rank_new.ori_classes='$category'
+                    and app_rank_new.rank_type='$rank_type'
+                    and app_rank.ori_classes='$category'
+                    and app_rank.rank_type='$rank_type'
+                    and app_rank.fetch_date='$cur_date'
+                ) as app_list
+                where up>0";
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]["num"];
+    }
+
+    //下降最快
+    public function get_app_rank_down($category, $rank_type, $start, $limit)
+    {
+        if ($category=="总榜" || $category=="应用")
+        {
+            $category = "app"; //兼容以前的类别命名
+        }
+
+        $cur_date = date("Y-m-d",time());
+        /*
+        $sql = "select name,icon,app_list.* FROM app_info LEFT JOIN
+                (
+                    select app_rank_new.app_id,app_rank_new.rank,(app_rank_new.rank-app_rank.rank) as down from app_rank_new right join
+                    app_rank on app_rank_new.app_id=app_rank.app_id
+                    where app_rank_new.ori_classes='$category'
+                    and app_rank_new.rank_type='$rank_type'
+                    and app_rank.ori_classes='$category'
+                    and app_rank.rank_type='$rank_type'
+                    and app_rank.fetch_date='$cur_date'
+                ) as app_list
+                on `app_info`.app_id=app_list.app_id
+                where down>0
+                ORDER BY down DESC limit $start,$limit";
+        $result = $this->db->query($sql)->result_array();
+        $num = $this->get_app_rank_down_num($category, $rank_type,$cur_date);
+        */
+        //当前最新的榜单情况
+        $sql = "select app_id,rank from app_rank_new
+                where app_rank_new.ori_classes='$category'
+                and rank_type='$rank_type'";
+        $cur_result = $this->db->query($sql)->result_array();
+
+        $cur_result_dict = array();
+        foreach ($cur_result as $item)
+        {
+            $cur_result_dict[$item["app_id"]] = $item["rank"];
+        }
+
+        //今天凌晨的榜单情况
+        $sql = "select name,icon,rank,app_rank.app_id
+                from app_info RIGHT join app_rank
+                on app_rank.app_id=app_info.app_id
+                where app_rank.ori_classes='$category'
+                and rank_type='$rank_type'
+                and fetch_date='$cur_date'";
+        $pre_result = $this->db->query($sql)->result_array();
+
+
+        //比较,以过去为基准,如果当前有排名,取当前和过去排名的差,如果是正的
+        //表示上升,添加到结果中.
+        //如果当前没有排名,当做1501,进行处理
+        $num = 0;//结果数
+        $result = array();
+        foreach ($pre_result as $item)
+        {
+            if (array_key_exists($item["app_id"], $cur_result_dict))
+            {
+                //如果当前包含之前的 app id
+                $dif = (int)$cur_result_dict[ $item["app_id"] ] - (int)$item["rank"];
+                if ($dif>0)
+                {
+                    $item["down"] = $dif;
+                    $item["rank"] = $cur_result_dict[ $item["app_id"] ];
+                    $result[] = $item;
+                    $num ++;
+                }
+            }
+            else //如果当前不包含之前的 app id
+            {
+                $dif = 1501 - (int)$item["rank"];
+                $item["down"] = $dif;
+                $item["rank"] = 1501;
+                $result[] = $item;
+                $num ++;
+            }
+        }
+
+        //排序
+        $final_result = $this->array_sort($result, "down", "desc");
+
+        //改写rank=1501的提示
+        $i = 0;
+        foreach ($final_result as $item)
+        {
+            if ( 1501 == (int)($item["rank"]))
+            {
+                $final_result[$i]["rank"] = "落榜/-";
+            }
+            $i++;
+        }
+
+        return array("status"=>0,"msg"=>"success","num"=>$num,"results"=>array_slice($final_result, $start, $limit));
+    }
+
+    public function get_app_rank_down_num($category, $rank_type,$cur_date)
+    {
+        $sql = "select count(*) as num from
+                (
+                    select app_rank_new.app_id,app_rank_new.rank,(app_rank_new.rank-app_rank.rank) as down from app_rank_new right join
+                    app_rank on app_rank_new.app_id=app_rank.app_id
+                    where app_rank_new.ori_classes='$category'
+                    and app_rank_new.rank_type='$rank_type'
+                    and app_rank.ori_classes='$category'
+                    and app_rank.rank_type='$rank_type'
+                    and app_rank.fetch_date='$cur_date'
+                ) as app_list
+                where down>0";
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]["num"];
+    }
+
+    //新上架,首次上架时间update_time = 所选时间的
+    public function get_relase_app($category, $date, $start, $limit)
+    {
+        if ("" == $date)
+        {
+            $date = date("Y-m-d");
+        }
+        if ($category=="总榜" || $category=="所有" ||$category=="应用")
+        {
+            $sql = "select app_id,icon,name,ori_classes from app_info
+                where update_time='$date' limit $start, $limit";
+        }
+        else
+        {
+            $sql = "select app_id,icon,name,ori_classes from app_info
+                where (ori_classes='$category' or ori_classes1='$category'
+                or ori_classes2='$category' or ori_classes3='$category')
+                and update_time='$date' limit $start, $limit";
+        }
+        $result = $this->db->query($sql)->result_array();
+        $num = $this->get_relase_app_num($category, $date);
+        return array("num"=>$num, "results"=>$result);
+    }
+
+    //新上架数量
+    public function get_relase_app_num($category, $date)
+    {
+        if ($category=="总榜" || $category=="所有" ||$category=="应用")
+        {
+            $sql = "select count(*) as num from app_info
+                where update_time='$date'";
+        }
+        else
+        {
+            $sql = "select count(*) as num from app_info
+                where (ori_classes='$category' or ori_classes1='$category'
+                or ori_classes2='$category' or ori_classes3='$category')
+                and update_time='$date'";
+        }
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]["num"];
+    }
+
+
+    //下架App监控,选择某一个日期,check_available_time在日期内,同时download_level = -1
+    //默认按照fetch_time排序,最近的排在前面
+    public function get_offline_app($date, $start, $limit)
+    {
+        if ("" == $date)
+        {
+            $date = date("Y-m-d");
+        }
+        $start_time = $date . " 00:00:00";
+        $end_time = $date . " 23:59:59";
+        //注,app rank的date取当前的天,是当天0点左右下载的
+        $sql = " select app_list.*,rank from
+                (
+                    select app_id,icon,name,ori_classes,user_comment_num_all from app_info
+                    where check_available_time>='$start_time' and check_available_time<='$end_time'
+                    and download_level=-1
+                ) as app_list
+				left join
+	            (
+		             SELECT rank,app_id from app_rank where fetch_date='$date'
+                     and rank_type='topfreeapplications' and ori_classes='app'
+                ) as app_rank_list
+                on app_list.app_id=app_rank_list.app_id
+                where name!=''
+                order by  case when rank is null then 1 else 0 end ,rank,user_comment_num_all desc
+                limit $start, $limit";
+        //echo time(). "|";
+        $result = $this->db->query($sql)->result_array();
+        //echo time(). "|";
+        $num = $this->get_offline_app_num($date);
+        //echo time(). "|";
+        return array("num"=>$num, "results"=>$result);
+    }
+
+    public function get_offline_app_num($date)
+    {
+        if ("" == $date)
+        {
+            $date = date("Y-m-d");
+        }
+        $start_time = $date . " 00:00:00";
+        $end_time = $date . " 23:59:59";
+        $sql = "select count(*) as num from app_info
+                where check_available_time>='$start_time' and check_available_time<='$end_time'
+                and download_level=-1";
+        $result = $this->db->query($sql)->result_array();
+        return $result[0]["num"];
+    }
+
     public function get_cagegory_score($ori_classes, $rank_type)
     {
         $score = 0;
-        if (strpos($ori_classes,"游戏")>=1) //如果是游戏子类 3分
+        if (strpos($ori_classes,"games")>=1) //如果是游戏子类 3分
         {
             $score = 3;
         }
-        elseif ("总榜"==$ori_classes) //总榜10分
+        elseif ("app"==$ori_classes) //总榜10分
         {
             $score = 10;
         }
@@ -331,11 +646,11 @@ class App_provider extends CI_Model {
             $score = 8;
         }
 
-        if ("免费" == $rank_type)
+        if ("free" == $rank_type)
         {
             $score = $score * 10;
         }
-        elseif ("付费" == $rank_type)
+        elseif ("paid" == $rank_type)
         {
             $score = $score * 8;
         }
@@ -354,7 +669,7 @@ class App_provider extends CI_Model {
         //获得limit小时前的数据
         if (10 == $limit) //默认的值
         {
-            $limit  = 24;
+            $limit  = 23;
         }
 
         $time_threshold = date("Y-m-d H:i:s",time()-60*60*($limit+1));//距当前limit小时前的时间
@@ -394,7 +709,7 @@ class App_provider extends CI_Model {
         #构造图表数据
         $data = array();
         $data["chart"]["type"] = "spline";
-        $data["title"]["text"] = "app排名(最近" .(string)round($limit/24,0) ."天)";
+        $data["title"]["text"] = "app rank (recent " .(string)round($limit/24,0) ." day)";
         $data["title"]["style"] = "fontFamily:'微软雅黑', 'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体',";
         $data["yAxis"]["title"]["text"] = "排名";
         $data["yAxis"]["reversed"] = "true";
@@ -424,13 +739,13 @@ class App_provider extends CI_Model {
         //构造排名数据
         #构造不同类别的数据,一级key是类别 内容是｛日期:排名}
         $category_data = array();
-        $rank_type_dict = array( "topfreeapplications"=>"免费",
-            "toppaidapplications"=>"付费","topgrossingapplications"=>"畅销" );
+        $rank_type_dict = array( "topfreeapplications"=>"free",
+            "toppaidapplications"=>"付费","topgrossingapplications"=>"top grossing" );
         foreach ($result as $item)
         {
-            if ($item["ori_classes"]=="应用")
+            if ($item["ori_classes"]=="app")
             {
-                $key = "总榜_" . $rank_type_dict[ $item["rank_type"] ];
+                $key = "app_" . $rank_type_dict[ $item["rank_type"] ];
             }
             else
             {
@@ -533,14 +848,14 @@ class App_provider extends CI_Model {
     {
         //step 1,总榜,获得排名最好的
         $sql = "select * from app_rank_new WHERE
-              app_id='$app_id' and ori_classes='应用' order by rank";
+              app_id='$app_id' and ori_classes='app' order by rank";
         $result = $this->db->query($sql)->result_array();
         $all_rank = array();
-        $rank_type_dict = array( "topfreeapplications"=>"免费",
-            "toppaidapplications"=>"付费","topgrossingapplications"=>"畅销" );
+        $rank_type_dict = array( "topfreeapplications"=>"free",
+            "toppaidapplications"=>"paid","topgrossingapplications"=>"grossing" );
         if ($result)
         {
-            $all_rank["ori_classes"] = "总榜";
+            $all_rank["ori_classes"] = "app";
             $all_rank["rank_type"] = $rank_type_dict[$result[0]["rank_type"]];
             $all_rank["rank"] = $result[0]["rank"];
             //更新时间,分钟计算
@@ -558,7 +873,7 @@ class App_provider extends CI_Model {
             }
 
 
-            $all_rank["update_time"] = (string)($update_time) . "分钟前";
+            $all_rank["update_time"] = (string)($update_time) . " minutes ago";
         }
 
         //step 2,分类榜单
@@ -570,7 +885,7 @@ class App_provider extends CI_Model {
               left join app_map_classes
               on app_rank_new.ori_classes=app_map_classes.ori_classes
               WHERE from_plat='appstore' and
-              app_id='$app_id' and app_rank_new.ori_classes!='应用')
+              app_id='$app_id' and app_rank_new.ori_classes!='app')
               as new_rank where level=1 order by rank";
         $result = $this->db->query($sql)->result_array();
         if ($result)
@@ -592,7 +907,7 @@ class App_provider extends CI_Model {
                 $update_time = 0;
             }
 
-            $category_rank["update_time"] = (string)($update_time) . "分钟前";
+            $category_rank["update_time"] = (string)($update_time) . " minutes ago";
         }
 
         return array($all_rank,$category_rank);
@@ -617,7 +932,7 @@ class App_provider extends CI_Model {
             if ($num == 0)
             {
                 //下载
-                $app_info = $this->download_app_info($app_id);
+                $app_info = $this->download_app_info($name);
                 if ( -1 != $app_info)
                 {
                     $name = $app_info["trackName"];
@@ -637,15 +952,15 @@ class App_provider extends CI_Model {
         }
         else
         {
-            /**********************英文等西方语言使用
+            ///**********************英文等西方语言使用
             $sql = "select * from app_info
             where name like '%$name%' and from_plat='appstore'
             order by download_times desc limit $start,$limit";
             $result = $this->db->query($sql)->result_array();
             $num = $this->search_app_search_results_num($name);
-            *********************************/
+            //*********************************/
 
-            /*****************中文使用************************/
+            /*****************中文使用************************
             $ali_searh_result = $this->get_app_ali_search_results($name, $start, $limit);
             $item_list = $ali_searh_result["result"]["items"];
             $result = array();
@@ -663,7 +978,7 @@ class App_provider extends CI_Model {
 
             }
             $num = $ali_searh_result["result"]["total"];
-            /*****************中文使用************************/
+            *****************中文使用************************/
         }
 
         return array("num"=>$num,"results"=>$result);
@@ -681,7 +996,7 @@ class App_provider extends CI_Model {
     //在线搜索app信息
     public function get_api_app_search_results($keyword)
     {
-        $url = "http://itunes.apple.com/search?entity=software&country=cn&explicit=NO&limit=20&term=$keyword";
+        $url = "http://itunes.apple.com/search?entity=software&country=us&explicit=NO&limit=20&term=$keyword";
         //美国的
         //$url = "http://itunes.apple.com/search?entity=software&country=us&explicit=NO&limit=20&term=$keyword";
         $content = file_get_contents($url);
@@ -1147,6 +1462,69 @@ class App_provider extends CI_Model {
         }
         $result= explode($mainDelim, $string);
         return $result;
+    }
+
+    //根据指定键值,对数组进行排序
+    public function array_sort($arr, $keys, $type = 'asc')
+    {
+        $keysvalue = $new_array = array();
+        foreach ($arr as $k => $v) {
+            $keysvalue[$k] = $v[$keys];
+        }
+        if ($type == 'asc') {
+            //对数组进行排序并保持索引关系
+            asort($keysvalue);
+        } else {
+            //对数组进行逆向排序并保持索引关系
+            arsort($keysvalue);
+        }
+        reset($keysvalue);
+        foreach ($keysvalue as $k => $v) {
+            $new_array[] = $arr[$k];
+        }
+        return $new_array;
+    }
+
+    //给定一个分类榜单和对应排名，给出对应的总榜排名。目前仅支持免费类型的榜单
+    //$c,子类类别
+    //$rank, 子类别排名
+    public function get_equal_all_category($c, $rank)
+    {
+        if ($c == '游戏')
+        {
+            $c = 'games';
+        }
+        $sql = "select app_list.*,name,icon from app_info right JOIN
+                (
+                  select app_rank_new.* from app_rank_new right join
+                   (
+                       select * from app_rank_new where ori_classes='$c' and rank=$rank
+                   ) as sub_app_list on app_rank_new.app_id = sub_app_list.app_id
+                    and app_rank_new.`rank_type` = sub_app_list.rank_type
+                    where app_rank_new.`ori_classes`='app'
+                )
+                as app_list on `app_info`.`app_id`=app_list.app_id";
+        $result = $this->db->query($sql)->result_array();
+        $rank_type_dict = array( "topfreeapplications"=>"免费",
+            "toppaidapplications"=>"付费","topgrossingapplications"=>"畅销" );
+
+        $result_dict = array();
+        foreach ($result as $item)
+        {
+            $ori_rank_type = $item["rank_type"];
+            $item["rank_type"] = $rank_type_dict[$item["rank_type"]];
+            $item["ori_classes"] = "总榜";
+            $item["sub_ori_classes"] = $c;
+            $item["sub_rank"] = $rank;
+            $result_dict[$ori_rank_type] = $item;
+        }
+
+        if ( 0 == count($result_dict))
+        {
+            $result_dict["msg"] = "";
+
+        }
+        return $result_dict;
     }
 }
 
