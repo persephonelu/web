@@ -4,8 +4,8 @@ require_once("CloudsearchIndex.php");
 require_once("CloudsearchDoc.php");
 require_once("CloudsearchSearch.php");
 
-$access_key = "HoFZrmdnBheFen1y";
-$secret = "hagWeBWw6s9270Avjjni933KiGvIgh";
+$access_key = "";
+$secret = "";
 //杭州公网API地址：http://opensearch-cn-hangzhou.aliyuncs.com
 //北京公网API地址：http://opensearch-cn-beijing.aliyuncs.com 
 $host = "http://intranet.opensearch-cn-hangzhou.aliyuncs.com";//根据自己的应用区域选择API
